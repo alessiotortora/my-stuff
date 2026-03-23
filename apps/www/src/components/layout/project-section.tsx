@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 
 export function ProjectSection() {
   const projects = [
@@ -16,16 +16,16 @@ export function ProjectSection() {
   ];
 
   return (
-    <div className="flex flex-col gap-3 mt-10 md:mt-16">
+    <div className="mt-10 flex flex-col gap-3 md:mt-16">
       <h2 className="font-medium text-[0.940rem] md:text-[0.985rem]">
         What I’ve Built & What I’m Exploring
       </h2>
-      <div className="flex gap-2 flex-col">
+      <div className="flex flex-col gap-2">
         {projects.map((project) => (
           <Link
+            className="-mx-2 rounded-md p-2 hover:bg-muted-foreground/10"
             key={project.label}
-            href={project.href}
-            className="hover:bg-muted-foreground/10 rounded-md -mx-2 p-2"
+            to={project.href}
           >
             <div className="flex flex-col gap-0">
               <p className="font-normal">{project.label}</p>

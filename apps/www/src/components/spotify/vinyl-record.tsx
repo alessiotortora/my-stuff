@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 interface VinylRecordProps {
-  className?: string;
   albumUrl?: string;
+  className?: string;
 }
 
 declare global {
@@ -24,12 +24,15 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
   const [rotation, setRotation] = useState(0);
   const lastPlaybackTimeRef = useRef(0);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: stopPlayback uses refs only, stable across renders
   useEffect(() => {
     // Preload audio buffer
     fetch("/scratch-sound.mp3")
       .then((response) => response.arrayBuffer())
       .then((arrayBuffer) => {
-        const tempContext = new (window.AudioContext || window.webkitAudioContext)();
+        const tempContext = new (
+          window.AudioContext || window.webkitAudioContext
+        )();
         return tempContext.decodeAudioData(arrayBuffer).then((buffer) => {
           audioBufferRef.current = buffer;
           tempContext.close();
@@ -46,13 +49,23 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
   }, []);
 
   const startPlayback = (playbackRate: number) => {
-    if (!audioContextRef.current || !audioBufferRef.current || !gainNodeRef.current) return;
+    if (
+      !(
+        audioContextRef.current &&
+        audioBufferRef.current &&
+        gainNodeRef.current
+      )
+    ) {
+      return;
+    }
 
     if (sourceNodeRef.current) {
       try {
         sourceNodeRef.current.stop();
         sourceNodeRef.current.disconnect();
-      } catch (e) {}
+      } catch (_) {
+        // Ignore cleanup errors from already-stopped sources
+      }
     }
 
     const source = audioContextRef.current.createBufferSource();
@@ -70,16 +83,24 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
   };
 
   const updatePlaybackRate = (deltaY: number) => {
-    if (!sourceNodeRef.current || !gainNodeRef.current || !audioContextRef.current) return;
+    if (
+      !(sourceNodeRef.current && gainNodeRef.current && audioContextRef.current)
+    ) {
+      return;
+    }
 
     const now = Date.now();
     const timeSinceLastUpdate = now - lastPlaybackTimeRef.current;
 
     if (timeSinceLastUpdate > 50) {
       const playbackRate = Math.abs(deltaY * 0.5);
-      sourceNodeRef.current.playbackRate.value = Math.min(Math.max(playbackRate, 0.1), 4);
+      sourceNodeRef.current.playbackRate.value = Math.min(
+        Math.max(playbackRate, 0.1),
+        4
+      );
 
-      const targetGain = playbackRate > 0.1 ? Math.min(playbackRate * 0.5, 1) : 0;
+      const targetGain =
+        playbackRate > 0.1 ? Math.min(playbackRate * 0.5, 1) : 0;
       gainNodeRef.current.gain.setTargetAtTime(
         targetGain,
         audioContextRef.current.currentTime,
@@ -104,10 +125,10 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
       // iOS 17+ audio session fix
       try {
         if (typeof navigator !== "undefined" && "audioSession" in navigator) {
-          // @ts-ignore – not yet in TypeScript types
+          // @ts-expect-error – not yet in TypeScript types
           navigator.audioSession.type = "playback";
         }
-      } catch (e) {
+      } catch (_) {
         // silent fail
       }
 
@@ -130,7 +151,9 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
   };
 
   const handleDrag = (y: number) => {
-    if (!isDraggingRef.current) return;
+    if (!isDraggingRef.current) {
+      return;
+    }
     const deltaY = y - lastYRef.current;
     lastYRef.current = y;
 
@@ -141,40 +164,50 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
   const handleDragEnd = () => {
     isDraggingRef.current = false;
     if (gainNodeRef.current && audioContextRef.current) {
-      gainNodeRef.current.gain.setTargetAtTime(0, audioContextRef.current.currentTime, 0.1);
+      gainNodeRef.current.gain.setTargetAtTime(
+        0,
+        audioContextRef.current.currentTime,
+        0.1
+      );
     }
   };
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: custom drag-to-scratch vinyl interaction
+    // biome-ignore lint/a11y/noNoninteractiveElementInteractions: custom drag-to-scratch vinyl interaction
     <div
+      className={`relative cursor-grab touch-none select-none active:cursor-grabbing ${className}`}
+      onMouseDown={(e) => {
+        e.preventDefault();
+        handleGesture(e.clientY);
+      }}
+      onMouseLeave={handleDragEnd}
+      onMouseMove={(e) => handleDrag(e.clientY)}
+      onMouseUp={handleDragEnd}
+      onTouchEnd={handleDragEnd}
+      onTouchMove={(e) => {
+        const touch = e.touches[0];
+        if (touch) {
+          handleDrag(touch.clientY);
+        }
+      }}
+      onTouchStart={(e) => {
+        const touch = e.touches[0];
+        if (touch) {
+          handleGesture(touch.clientY);
+        }
+      }}
       ref={recordRef}
-      className={`relative cursor-grab active:cursor-grabbing touch-none select-none ${className}`}
       style={{
         transform: `rotate(${rotation}deg)`,
         transition: isDraggingRef.current ? "none" : "transform 0.5s ease-out",
         touchAction: "none",
       }}
-      onMouseDown={(e) => {
-        e.preventDefault();
-        handleGesture(e.clientY);
-      }}
-      onMouseMove={(e) => handleDrag(e.clientY)}
-      onMouseUp={handleDragEnd}
-      onMouseLeave={handleDragEnd}
-      onTouchStart={(e) => {
-        const touch = e.touches[0];
-        if (touch) handleGesture(touch.clientY);
-      }}
-      onTouchMove={(e) => {
-        const touch = e.touches[0];
-        if (touch) handleDrag(touch.clientY);
-      }}
-      onTouchEnd={handleDragEnd}
     >
-      <div className="relative w-full h-full">
+      <div className="relative h-full w-full">
         {albumUrl && (
           <div
-            className="absolute inset-0 rounded-full overflow-hidden"
+            className="absolute inset-0 overflow-hidden rounded-full"
             style={{
               width: "47%",
               height: "47%",
@@ -183,7 +216,12 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
               zIndex: 1,
             }}
           >
-            <img src={albumUrl} alt="Album label" className="w-full h-full object-cover" />
+            {/* biome-ignore lint/correctness/useImageSize: sized by parent container */}
+            <img
+              alt="Album label"
+              className="h-full w-full object-cover"
+              src={albumUrl}
+            />
           </div>
         )}
         <div
@@ -196,10 +234,11 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
             zIndex: 1,
           }}
         />
+        {/* biome-ignore lint/correctness/useImageSize: sized by parent container */}
         <img
-          src="/record.png"
           alt="Interactive vinyl record"
-          className="w-full h-full object-cover rounded-md"
+          className="h-full w-full rounded-md object-cover"
+          src="/record.png"
         />
       </div>
     </div>

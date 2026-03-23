@@ -13,12 +13,12 @@ const VideoPlayer = ({ src }: { src: string }) => {
   return (
     <MediaController>
       <video
+        className="h-full w-full object-contain"
+        muted
+        playsInline
+        preload="auto"
         slot="media"
         src={src}
-        preload="auto"
-        muted
-        className="w-full h-full object-contain"
-        playsInline
         suppressHydrationWarning
       />
       <MediaControlBar>

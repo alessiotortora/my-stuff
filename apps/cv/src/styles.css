@@ -1,0 +1,7 @@
+@import "@repo/ui/globals.css";
+
+@font-face {
+  font-family: "AlessioScript";
+  src: url("/fonts/AlessioScript-Regular.ttf") format("truetype");
+  font-display: swap;
+}

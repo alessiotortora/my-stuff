@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { SlidingNumber } from "./sliding-number";
 
 interface LocalClockProps {
-  timezone: string;
   location: string;
+  timezone: string;
 }
 
 export function LocalClock({ timezone, location }: LocalClockProps) {
@@ -17,7 +17,9 @@ export function LocalClock({ timezone, location }: LocalClockProps) {
   useEffect(() => {
     const updateTime = () => {
       const date = new Date();
-      const localTime = new Date(date.toLocaleString("en-US", { timeZone: timezone }));
+      const localTime = new Date(
+        date.toLocaleString("en-US", { timeZone: timezone })
+      );
       setHours(localTime.getHours());
       setMinutes(localTime.getMinutes());
       setSeconds(localTime.getSeconds());
@@ -33,14 +35,14 @@ export function LocalClock({ timezone, location }: LocalClockProps) {
   }, [timezone]);
 
   return (
-    <div className="flex gap-1 items-center text-muted-foreground text-xs text-light">
+    <div className="flex items-center gap-1 text-light text-muted-foreground text-xs">
       <ClockIcon className="size-3" />
-      <div className="flex ">
-        <SlidingNumber value={hours} padStart={true} />
+      <div className="flex">
+        <SlidingNumber padStart={true} value={hours} />
         <span className="">:</span>
-        <SlidingNumber value={minutes} padStart={true} />
+        <SlidingNumber padStart={true} value={minutes} />
         <span className="">:</span>
-        <SlidingNumber value={seconds} padStart={true} />
+        <SlidingNumber padStart={true} value={seconds} />
       </div>
       <span> - </span>
       <span>{location}</span>

@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 interface ConsoleArtProps {
   art?: string;
-  message?: string;
   enabled?: boolean;
+  message?: string;
   method?: "log" | "info" | "warn" | "error";
 }
 
@@ -25,7 +25,9 @@ export function ConsoleArt({
   method = "log",
 }: ConsoleArtProps) {
   useEffect(() => {
-    if (!enabled || typeof window === "undefined") return;
+    if (!enabled || typeof window === "undefined") {
+      return;
+    }
 
     if (message) {
       const lines = message.split("\\n");

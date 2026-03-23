@@ -1,0 +1,6 @@
+dist/
+.wrangler/
+.content-collections/
+env.d.ts
+.env
+.env.local

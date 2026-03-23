@@ -1,10 +1,10 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@repo/ui/lib/utils";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import type * as React from "react";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full h-6 text-xs gap-1.5 transition-all",
+  "inline-flex h-6 items-center gap-1.5 rounded-full text-xs transition-all",
   {
     variants: {
       variant: {
@@ -22,7 +22,7 @@ const badgeVariants = cva(
         lg: "px-3 py-1 text-sm",
       },
       hasIcon: {
-        true: "pl-0 pr-0 w-6 justify-center md:pl-2.5 md:pr-3 md:w-auto md:justify-start",
+        true: "w-6 justify-center pr-0 pl-0 md:w-auto md:justify-start md:pr-3 md:pl-2.5",
         false: "",
       },
     },
@@ -37,8 +37,8 @@ const badgeVariants = cva(
 export interface BadgeProps
   extends React.ComponentProps<"span">,
     VariantProps<typeof badgeVariants> {
-  className?: string;
   asChild?: boolean;
+  className?: string;
   icon?: React.ReactNode;
 }
 
@@ -51,15 +51,20 @@ export const Badge = ({
   ...props
 }: BadgeProps) => {
   const hasIcon = Boolean(icon);
-  const Comp = asChild ? Slot : "span";
+  // biome-ignore lint/suspicious/noExplicitAny: Radix Slot ref type narrowing issue with React 19
+  const Comp: any = asChild ? Slot : "span";
 
   return (
     <Comp
-      data-slot="badge"
       className={cn(badgeVariants({ variant, size, hasIcon }), className)}
+      data-slot="badge"
       {...props}
     >
-      {icon && <span className="flex items-center justify-center shrink-0 size-4">{icon}</span>}
+      {icon && (
+        <span className="flex size-4 shrink-0 items-center justify-center">
+          {icon}
+        </span>
+      )}
       <span className={cn(hasIcon && "hidden md:block")}>{props.children}</span>
     </Comp>
   );

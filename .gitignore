@@ -27,6 +27,15 @@ out/
 build
 dist
 
+# Cloudflare
+.wrangler/
+
+# Content Collections
+.content-collections/
+
+# Varlock
+env.d.ts
+
 
 # Debug
 npm-debug.log*

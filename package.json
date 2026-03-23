@@ -1,24 +1,37 @@
 {
-	"name": "my-repo",
-	"private": true,
-	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev",
-		"lint": "turbo run lint",
-		"format": "biome format --write",
-		"check-types": "turbo run check-types"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"turbo": "^2.5.2",
-		"typescript": "5.8.2"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"packageManager": "bun@1.2.10",
-	"workspaces": ["apps/*", "packages/*"],
-	"dependencies": {
-		"date-fns": "^4.1.0"
-	}
+  "name": "my-repo",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "check-types": "turbo run check-types",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.7",
+    "@varlock/bitwarden-plugin": "^0.0.5",
+    "lefthook": "^2.1.4",
+    "turbo": "^2.5.2",
+    "typescript": "5.8.2",
+    "ultracite": "7.3.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.2.10",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@varlock/vite-integration": "^0.2.6",
+    "date-fns": "^4.1.0",
+    "varlock": "^0.6.2"
+  },
+  "overrides": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0"
+  }
 }

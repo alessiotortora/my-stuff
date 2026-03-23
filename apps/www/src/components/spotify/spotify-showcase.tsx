@@ -1,116 +1,90 @@
-interface NowPlayingResponse {
-  isPlaying: boolean;
-  title?: string;
-  artist?: string;
-  album?: string;
-  albumImageUrl?: string;
-  songUrl?: string;
-  playedAt?: string;
-  error?: string;
-}
-
-async function getNowPlaying(): Promise<NowPlayingResponse> {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/spotify`, {
-      next: { revalidate: 30 },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!res.ok) {
-      console.error("Spotify API error:", res.status, res.statusText);
-      return { isPlaying: false, error: "Failed to fetch from Spotify API" };
-    }
-
-    const contentType = res.headers.get("content-type");
-    if (!contentType || !contentType.includes("application/json")) {
-      console.error("Invalid content type:", contentType);
-      return { isPlaying: false, error: "Invalid response from API" };
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.error("Error fetching Spotify data:", error);
-    return { isPlaying: false, error: "Error connecting to Spotify API" };
-  }
-}
-
+import type { NowPlayingResponse } from "#/server/spotify";
 import { AlbumWrapper } from "./album-wrapper";
 
-export async function SpotifyShowcase() {
-  const song = await getNowPlaying();
-
+export function SpotifyShowcase({ song }: { song: NowPlayingResponse }) {
   if (song.error || !song.title) {
     return (
-      <div className="flex items-center justify-center mt-12">
-        <p className="text-gray-500">{song.error || "Not playing anything right now"}</p>
+      <div className="mt-12 flex items-center justify-center">
+        <p className="text-gray-500">
+          {song.error || "Not playing anything right now"}
+        </p>
       </div>
     );
   }
 
   return (
     <div className="mt-8 sm:mt-14">
-      <div className="relative block md:hidden h-10">
-        <img src="/arrow.svg" alt="handwritten arrow" className="h-6 absolute top-2 left-44" />
-        <p className=" absolute top-0 left-60 font-script text-lg tracking-wider">
+      <div className="relative block h-10 md:hidden">
+        <img
+          alt="handwritten arrow"
+          className="absolute top-2 left-44 h-6"
+          height={24}
+          src="/arrow.svg"
+          width={24}
+        />
+        <p className="absolute top-0 left-60 font-script text-lg tracking-wider">
           tap me and scratch!
         </p>
       </div>
 
-      <div className="flex md:gap-32 flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row md:gap-32">
         <div>
           {song.albumImageUrl && (
-            <AlbumWrapper albumUrl={song.albumImageUrl} albumName={song.album} />
+            <AlbumWrapper
+              albumName={song.album}
+              albumUrl={song.albumImageUrl}
+            />
           )}
         </div>
 
-        <div className="space-y-2 items-center flex mt-4 md:mt-0">
+        <div className="mt-4 flex items-center space-y-2 md:mt-0">
           {(() => {
-            const prefix = song.isPlaying ? "Currently listening to" : "Recently played";
+            const prefix = song.isPlaying
+              ? "Currently listening to"
+              : "Recently played";
             return (
               <p>
                 {prefix}{" "}
                 {song.songUrl ? (
                   <>
                     <a
+                      className="font-normal underline decoration-muted-foreground decoration-dashed underline-offset-4"
                       href={song.songUrl}
-                      target="_blank"
                       rel="noopener noreferrer"
-                      className="font-normal underline decoration-dashed decoration-muted-foreground underline-offset-4"
+                      target="_blank"
                     >
                       {song.title}
                     </a>{" "}
                     by{" "}
                     <a
+                      className="font-normal underline decoration-muted-foreground decoration-dashed underline-offset-4"
                       href={song.songUrl}
-                      target="_blank"
                       rel="noopener noreferrer"
-                      className="font-normal underline decoration-dashed decoration-muted-foreground underline-offset-4"
+                      target="_blank"
                     >
                       {song.artist}
                     </a>{" "}
                     from the album{" "}
                     <a
+                      className="font-normal underline decoration-muted-foreground decoration-dashed underline-offset-4"
                       href={song.songUrl}
-                      target="_blank"
                       rel="noopener noreferrer"
-                      className="font-normal underline decoration-dashed decoration-muted-foreground underline-offset-4"
+                      target="_blank"
                     >
                       {song.album}
                     </a>
                   </>
                 ) : (
                   <>
-                    <span className="font-normal underline decoration-dashed decoration-muted-foreground underline-offset-4">
+                    <span className="font-normal underline decoration-muted-foreground decoration-dashed underline-offset-4">
                       {song.title}
                     </span>{" "}
                     by{" "}
-                    <span className="font-normal underline decoration-dashed decoration-muted-foreground underline-offset-4">
+                    <span className="font-normal underline decoration-muted-foreground decoration-dashed underline-offset-4">
                       {song.artist}
                     </span>{" "}
                     from the album{" "}
-                    <span className="font-normal underline decoration-dashed decoration-muted-foreground underline-offset-4">
+                    <span className="font-normal underline decoration-muted-foreground decoration-dashed underline-offset-4">
                       {song.album}
                     </span>
                   </>
@@ -123,11 +97,13 @@ export async function SpotifyShowcase() {
       </div>
       <div className="relative hidden md:block">
         <img
-          src="/arrow.svg"
           alt="handwritten arrow"
-          className="h-6 absolute top-0 left-52 rotate-180 transform scale-x-[-1]"
+          className="absolute top-0 left-52 h-6 rotate-180 scale-x-[-1] transform"
+          height={24}
+          src="/arrow.svg"
+          width={24}
         />
-        <p className="absolute my-6 top-[-15] left-[17rem] font-script tracking-wider">
+        <p className="absolute top-[-15] left-[17rem] my-6 font-script tracking-wider">
           scratch me
         </p>
       </div>
