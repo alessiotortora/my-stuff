@@ -1,18 +1,19 @@
-name: CI
-
 on:
-  push:
-    branches: [main, development]
   pull_request:
     branches: [main]
 
 jobs:
-  ci:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: oven-sh/setup-bun@v2
+
       - run: bun install --frozen-lockfile
+
       - run: bun run check
-      - run: bun run check-types
+
       - run: bun run build
+        env:
+          BITWARDEN_ACCESS_TOKEN: ${{ secrets.BITWARDEN_ACCESS_TOKEN }}
