@@ -7,7 +7,7 @@
     "dev": "varlock run -- vite dev --port 3000",
     "build": "vite build",
     "deploy": "varlock run -- sh -c 'APP_ENV=production vite build && wrangler deploy'",
-    "check-types": "tsc --noEmit"
+    "check-types": "varlock typegen && tsc --noEmit"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.0",

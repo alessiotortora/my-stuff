@@ -14,7 +14,7 @@ const TRANSITION = {
   stiffness: 280,
   damping: 18,
   mass: 0.3,
-};
+} as const;
 
 function Digit({ value, place }: { value: number; place: number }) {
   const valueRoundedToPlace = Math.floor(value / place) % 10;
