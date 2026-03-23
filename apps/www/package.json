@@ -21,7 +21,6 @@
     "@types/mdx": "^2.0.13",
     "@varlock/bitwarden-plugin": "^0.0.5",
     "@varlock/vite-integration": "^0.2.7",
-    "media-chrome": "^4.11.0",
     "motion": "^12.9.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
