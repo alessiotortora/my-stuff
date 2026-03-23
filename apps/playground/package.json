@@ -15,11 +15,11 @@
     "@tanstack/react-router": "latest",
     "@tanstack/react-start": "latest",
     "@varlock/bitwarden-plugin": "^0.0.5",
-    "@varlock/vite-integration": "^0.2.6",
+    "@varlock/vite-integration": "^0.2.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.1.18",
-    "varlock": "^0.6.2"
+    "varlock": "^0.6.3"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.30.0",
