@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
+import { Providers } from "#/providers";
 import appCss from "#/styles.css?url";
 
 export const Route = createRootRoute({
@@ -38,8 +39,10 @@ function RootComponent() {
         <HeadContent />
       </head>
       <body className="antialiased">
-        <ConsoleArt message="Welcome to my portfolio!\n\nYou opened the console, so you must be interested! Feel free to send me a message: hello@alessiotortora.com" />
-        <Outlet />
+        <Providers>
+          <ConsoleArt message="Welcome to my portfolio!\n\nYou opened the console, so you must be interested! Feel free to send me a message: hello@alessiotortora.com" />
+          <Outlet />
+        </Providers>
         <Scripts />
       </body>
     </html>

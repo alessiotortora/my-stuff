@@ -1,5 +1,5 @@
 {
-  "name": "my-repo",
+  "name": "my-stuff",
   "private": true,
   "scripts": {
     "build": "turbo run build",

@@ -10,6 +10,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@posthog/react": "^1.8.2",
     "@repo/ui": "*",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-router": "latest",

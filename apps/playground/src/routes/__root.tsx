@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
+import { Providers } from "#/providers";
 import appCss from "#/styles.css?url";
 
 export const Route = createRootRoute({
@@ -51,7 +52,9 @@ function RootComponent() {
         <HeadContent />
       </head>
       <body className="antialiased">
-        <Outlet />
+        <Providers>
+          <Outlet />
+        </Providers>
         <Scripts />
       </body>
     </html>
