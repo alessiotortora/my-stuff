@@ -44,7 +44,7 @@
     system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-primary: var(--font-inter, var(--font-fallback));
   --font-secondary: var(--font-newsreader, var(--font-fallback));
-  --font-script: var(--font-script, var(--font-fallback));
+  --font-script: var(--font-script-custom, "AlessioScript", cursive);
 
   /* Duration */
   --duration-snappy: 220ms;
@@ -133,20 +133,20 @@
   }
 
   p {
-    font-size: .875rem;
+    font-size: 0.875rem;
     font-weight: 300;
     line-height: 1.4rem;
   }
 
   li {
-    font-size: .875rem;
+    font-size: 0.875rem;
     font-weight: 300;
     line-height: 1.4rem;
   }
 
   body {
-    @apply bg-background text-foreground;
     font-family: var(--font-primary);
+    @apply bg-background text-foreground;
   }
 
   .blur-gradient-top {

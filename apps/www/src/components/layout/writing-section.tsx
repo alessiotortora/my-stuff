@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 
 export function WritingSection() {
   const writings = [
@@ -15,14 +15,16 @@ export function WritingSection() {
   ];
 
   return (
-    <div className="flex flex-col gap-3 mt-8 md:mt-14">
-      <h2 className="font-medium text-[0.940rem] md:text-[0.985rem]">Writing</h2>
-      <div className="flex gap-2 flex-col">
+    <div className="mt-8 flex flex-col gap-3 md:mt-14">
+      <h2 className="font-medium text-[0.940rem] md:text-[0.985rem]">
+        Writing
+      </h2>
+      <div className="flex flex-col gap-2">
         {writings.map((writing) => (
           <Link
+            className="-mx-2 rounded-md p-2 hover:bg-muted-foreground/5"
             key={writing.label}
-            href={writing.href}
-            className="hover:bg-muted-foreground/5 rounded-md -mx-2 p-2"
+            to={writing.href}
           >
             <div className="flex flex-col gap-0">
               <p className="font-normal">{writing.label}</p>

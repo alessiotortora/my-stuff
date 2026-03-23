@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "www",
+  "compatibility_date": "2025-03-21",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "www.alessiotortora.com", "custom_domain": true },
+    { "pattern": "alessiotortora.com", "custom_domain": true }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

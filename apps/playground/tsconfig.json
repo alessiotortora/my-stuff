@@ -1,0 +1,12 @@
+{
+  "extends": "@repo/typescript-config/vite.json",
+  "compilerOptions": {
+    "paths": {
+      "#/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "content-collections": ["./.content-collections/generated"]
+    }
+  },
+  "include": ["src", "content-collections.ts", "vite.config.ts", "env.d.ts"],
+  "exclude": ["node_modules", "dist", ".content-collections"]
+}

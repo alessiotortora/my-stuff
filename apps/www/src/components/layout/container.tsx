@@ -4,12 +4,12 @@ import { Header } from "./header";
 
 export default function Container({ children }: { children: React.ReactNode }) {
   return (
-    <div className="max-w-xl mx-auto px-6 py-12 md:py-16 min-h-screen flex flex-col pb-12">
-      <div className="fixed top-0 left-0 right-0 w-full h-20 z-50 blur-gradient-top pointer-events-none" />
+    <div className="mx-auto flex min-h-screen max-w-xl flex-col px-6 py-12 pb-12 md:py-16">
+      <div className="pointer-events-none fixed top-0 right-0 left-0 z-50 h-20 w-full blur-gradient-top" />
       <div className="flex justify-end">
-        <LocalClock timezone="Europe/Zurich" location="CEST" />
+        <LocalClock location="CEST" timezone="Europe/Zurich" />
       </div>
-      <Header title="Alessio Tortora" description="Developer + (Designer)" />
+      <Header description="Developer + (Designer)" title="Alessio Tortora" />
       {children}
     </div>
   );
