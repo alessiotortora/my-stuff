@@ -1,4 +1,5 @@
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { LinkSquare02Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import cvData from "../../data/cv.json";
 import type { CVData, EducationEntry, TimelineEntry } from "../../types/cv";
 import { Section } from "./section";
@@ -57,7 +58,7 @@ export function Profile({ data = cvData }: { data?: CVData }) {
             href={data.projects.link}
           >
             website
-            <ExternalLinkIcon className="h-3.5 w-3.5" />
+            <HugeiconsIcon className="h-3.5 w-3.5" icon={LinkSquare02Icon} />
           </a>
         </p>
       </Section>

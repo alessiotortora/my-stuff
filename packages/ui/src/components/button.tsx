@@ -1,6 +1,5 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@repo/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ReactNode } from "react";
@@ -34,7 +33,6 @@ const buttonVariants = cva(
 interface ButtonProps
   extends React.ComponentProps<"button">,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
   children: ReactNode;
   className?: string;
   icon?: ReactNode;
@@ -45,18 +43,15 @@ export function Button({
   className,
   variant,
   size,
-  asChild = false,
   icon,
+  type = "button",
   ...props
 }: ButtonProps) {
-  // biome-ignore lint/suspicious/noExplicitAny: Radix Slot ref type narrowing issue with React 19
-  const Comp: any = asChild ? Slot : "button";
-
   return (
-    <Comp
+    <button
       className={cn(buttonVariants({ variant, size, className }))}
       data-slot="button"
-      type={asChild ? undefined : "button"}
+      type={type}
       {...props}
     >
       {children}
@@ -65,7 +60,7 @@ export function Button({
           {icon}
         </span>
       )}
-    </Comp>
+    </button>
   );
 }
 

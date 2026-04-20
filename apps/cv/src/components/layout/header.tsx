@@ -1,4 +1,5 @@
-import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import { Mail01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import {
   Avatar,
   AvatarFallback,
@@ -32,7 +33,7 @@ export function Header({
           <Badge variant="secondary">
             <a href="https://www.alessiotortora.com/">alessiotortora.com</a>
           </Badge>
-          <Badge icon={<EnvelopeClosedIcon />} variant="default">
+          <Badge icon={<HugeiconsIcon icon={Mail01Icon} />} variant="default">
             <a href="mailto:hello@alessiotortora.com">contact me</a>
           </Badge>
         </div>

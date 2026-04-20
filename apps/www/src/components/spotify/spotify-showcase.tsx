@@ -18,9 +18,9 @@ export function SpotifyShowcase({ song }: { song: NowPlayingResponse }) {
         <img
           alt="handwritten arrow"
           className="absolute top-2 left-44 h-6"
-          height={24}
+          height={50}
           src="/arrow.svg"
-          width={24}
+          width={50}
         />
         <p className="absolute top-0 left-60 font-script text-lg tracking-wider">
           tap me and scratch!
@@ -99,11 +99,11 @@ export function SpotifyShowcase({ song }: { song: NowPlayingResponse }) {
         <img
           alt="handwritten arrow"
           className="absolute top-0 left-52 h-6 rotate-180 scale-x-[-1] transform"
-          height={24}
+          height={50}
           src="/arrow.svg"
-          width={24}
+          width={50}
         />
-        <p className="absolute top-[-15] left-[17rem] my-6 font-script tracking-wider">
+        <p className="absolute top-[-15] left-68 my-6 font-script tracking-wider">
           scratch me
         </p>
       </div>

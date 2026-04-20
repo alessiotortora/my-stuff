@@ -1,6 +1,7 @@
 "use client";
 
-import { ClockIcon } from "@radix-ui/react-icons";
+import { Clock01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { useEffect, useState } from "react";
 import { SlidingNumber } from "./sliding-number";
 
@@ -36,7 +37,7 @@ export function LocalClock({ timezone, location }: LocalClockProps) {
 
   return (
     <div className="flex items-center gap-1 text-light text-muted-foreground text-xs">
-      <ClockIcon className="size-3" />
+      <HugeiconsIcon className="size-3" icon={Clock01Icon} />
       <div className="flex">
         <SlidingNumber padStart={true} value={hours} />
         <span className="">:</span>
