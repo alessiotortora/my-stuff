@@ -7,7 +7,7 @@
     "dev": "vite dev --port 3002",
     "build": "vite build",
     "deploy": "varlock run -- sh -c 'APP_ENV=production vite build && wrangler deploy'",
-    "check-types": "tsc --noEmit"
+    "check-types": "varlock typegen && tsc --noEmit"
   },
   "dependencies": {
     "@posthog/react": "^1.8.2",
