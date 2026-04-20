@@ -1,4 +1,5 @@
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { LinkSquare02Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 interface SectionItemProps {
   href?: string;
@@ -20,7 +21,7 @@ export function SectionItem({ label, value, href }: SectionItemProps) {
           target="_blank"
         >
           <span>{value}</span>
-          <ExternalLinkIcon className="h-3.5 w-3.5" />
+          <HugeiconsIcon className="h-3.5 w-3.5" icon={LinkSquare02Icon} />
         </a>
       ) : (
         <span className="text-foreground">{value}</span>

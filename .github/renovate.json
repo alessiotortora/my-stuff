@@ -1,0 +1,53 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits", ":dependencyDashboard"],
+  "timezone": "Europe/Zurich",
+  "schedule": ["before 6am on Monday"],
+  "labels": ["dependencies"],
+  "prConcurrentLimit": 5,
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    },
+    {
+      "groupName": "tanstack",
+      "matchPackagePatterns": ["^@tanstack/"]
+    },
+    {
+      "groupName": "base-ui",
+      "matchPackagePatterns": ["^@base-ui"]
+    },
+    {
+      "groupName": "hugeicons",
+      "matchPackagePatterns": ["^@hugeicons/"]
+    },
+    {
+      "groupName": "react",
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ]
+    },
+    {
+      "groupName": "tailwind",
+      "matchPackagePatterns": ["tailwind"]
+    },
+    {
+      "groupName": "biome / ultracite",
+      "matchPackageNames": ["@biomejs/biome", "ultracite"]
+    },
+    {
+      "groupName": "varlock",
+      "matchPackagePatterns": ["^varlock", "^@varlock/"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": false
+  }
+}

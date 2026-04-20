@@ -1,4 +1,5 @@
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { Button } from "@repo/ui/components/button";
 
 const links = [
@@ -19,7 +20,9 @@ export function LinkSection() {
         {links.map((link) => (
           <Button
             className="font-light"
-            icon={<ArrowTopRightIcon className="size-4" />}
+            icon={
+              <HugeiconsIcon className="size-4" icon={ArrowUpRight01Icon} />
+            }
             key={link.label}
             variant="link"
           >

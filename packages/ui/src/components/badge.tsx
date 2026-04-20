@@ -1,4 +1,3 @@
-import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@repo/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import type * as React from "react";
@@ -37,7 +36,6 @@ const badgeVariants = cva(
 export interface BadgeProps
   extends React.ComponentProps<"span">,
     VariantProps<typeof badgeVariants> {
-  asChild?: boolean;
   className?: string;
   icon?: React.ReactNode;
 }
@@ -47,15 +45,12 @@ export const Badge = ({
   variant,
   size,
   icon,
-  asChild = false,
   ...props
 }: BadgeProps) => {
   const hasIcon = Boolean(icon);
-  // biome-ignore lint/suspicious/noExplicitAny: Radix Slot ref type narrowing issue with React 19
-  const Comp: any = asChild ? Slot : "span";
 
   return (
-    <Comp
+    <span
       className={cn(badgeVariants({ variant, size, hasIcon }), className)}
       data-slot="badge"
       {...props}
@@ -66,7 +61,7 @@ export const Badge = ({
         </span>
       )}
       <span className={cn(hasIcon && "hidden md:block")}>{props.children}</span>
-    </Comp>
+    </span>
   );
 };
 
