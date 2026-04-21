@@ -14,7 +14,7 @@
     "@varlock/bitwarden-plugin": "^0.0.6",
     "lefthook": "^2.1.6",
     "turbo": "^2.9.6",
-    "typescript": "5.8.2",
+    "typescript": "5.9.3",
     "ultracite": "7.6.0"
   },
   "engines": {
