@@ -10,7 +10,7 @@
     "check-types": "varlock typegen && tsc --noEmit"
   },
   "dependencies": {
-    "@posthog/react": "^1.8.2",
+    "@posthog/react": "^1.9.0",
     "@repo/ui": "*",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-router": "latest",
