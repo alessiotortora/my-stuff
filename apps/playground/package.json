@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev --port 3002",
     "build": "vite build",
-    "deploy": "varlock run -- sh -c 'APP_ENV=production vite build && wrangler deploy'",
+    "deploy": "APP_ENV=production bun run build && APP_ENV=production varlock-wrangler deploy",
     "check-types": "varlock typegen && tsc --noEmit"
   },
   "dependencies": {
@@ -16,7 +16,7 @@
     "@tanstack/react-router": "latest",
     "@tanstack/react-start": "latest",
     "@varlock/bitwarden-plugin": "^0.0.6",
-    "@varlock/vite-integration": "^0.2.10",
+    "@varlock/cloudflare-integration": "^0.1.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "tailwindcss": "^4.2.4",

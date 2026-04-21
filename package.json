@@ -26,7 +26,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@varlock/vite-integration": "^0.2.10",
+    "@varlock/cloudflare-integration": "^0.1.0",
     "date-fns": "^4.1.0",
     "varlock": "^0.9.0"
   },
