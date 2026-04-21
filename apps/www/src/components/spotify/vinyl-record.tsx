@@ -63,7 +63,7 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
       try {
         sourceNodeRef.current.stop();
         sourceNodeRef.current.disconnect();
-      } catch (_) {
+      } catch {
         // Ignore cleanup errors from already-stopped sources
       }
     }
@@ -128,7 +128,7 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
           // @ts-expect-error – not yet in TypeScript types
           navigator.audioSession.type = "playback";
         }
-      } catch (_) {
+      } catch {
         // silent fail
       }
 

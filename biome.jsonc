@@ -5,5 +5,13 @@
     "ultracite/biome/react",
     "ultracite/biome/remix",
     "ultracite/biome/vitest"
+  ],
+  "overrides": [
+    {
+      "includes": ["**/routeTree.gen.ts"],
+      "linter": { "enabled": false },
+      "formatter": { "enabled": false },
+      "assist": { "enabled": false }
+    }
   ]
 }
