@@ -5,13 +5,13 @@
     "": {
       "name": "my-repo",
       "dependencies": {
-        "@varlock/vite-integration": "^0.2.7",
+        "@varlock/vite-integration": "^0.2.10",
         "date-fns": "^4.1.0",
-        "varlock": "^0.6.3",
+        "varlock": "^0.9.0",
       },
       "devDependencies": {
         "@biomejs/biome": "2.4.12",
-        "@varlock/bitwarden-plugin": "^0.0.5",
+        "@varlock/bitwarden-plugin": "^0.0.6",
         "lefthook": "^2.1.6",
         "turbo": "^2.9.6",
         "typescript": "5.8.2",
@@ -28,12 +28,12 @@
         "@tailwindcss/vite": "^4.2.4",
         "@tanstack/react-router": "latest",
         "@tanstack/react-start": "latest",
-        "@varlock/bitwarden-plugin": "^0.0.5",
-        "@varlock/vite-integration": "^0.2.7",
+        "@varlock/bitwarden-plugin": "^0.0.6",
+        "@varlock/vite-integration": "^0.2.10",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
         "tailwindcss": "^4.2.4",
-        "varlock": "^0.6.3",
+        "varlock": "^0.9.0",
       },
       "devDependencies": {
         "@cloudflare/vite-plugin": "^1.33.1",
@@ -56,12 +56,12 @@
         "@tailwindcss/vite": "^4.2.4",
         "@tanstack/react-router": "latest",
         "@tanstack/react-start": "latest",
-        "@varlock/bitwarden-plugin": "^0.0.5",
-        "@varlock/vite-integration": "^0.2.7",
+        "@varlock/bitwarden-plugin": "^0.0.6",
+        "@varlock/vite-integration": "^0.2.10",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
         "tailwindcss": "^4.2.4",
-        "varlock": "^0.6.3",
+        "varlock": "^0.9.0",
       },
       "devDependencies": {
         "@cloudflare/vite-plugin": "^1.33.1",
@@ -92,14 +92,14 @@
         "@tanstack/react-router": "latest",
         "@tanstack/react-start": "latest",
         "@types/mdx": "^2.0.13",
-        "@varlock/bitwarden-plugin": "^0.0.5",
-        "@varlock/vite-integration": "^0.2.7",
+        "@varlock/bitwarden-plugin": "^0.0.6",
+        "@varlock/vite-integration": "^0.2.10",
         "motion": "^12.38.0",
         "react": "^19.2.5",
         "react-dom": "^19.2.5",
         "react-use-measure": "^2.1.7",
         "tailwindcss": "^4.2.4",
-        "varlock": "^0.6.3",
+        "varlock": "^0.9.0",
       },
       "devDependencies": {
         "@cloudflare/vite-plugin": "^1.33.1",
@@ -676,9 +676,9 @@
 
     "@ungap/structured-clone": ["@ungap/structured-clone@1.3.0", "", {}, "sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g=="],
 
-    "@varlock/bitwarden-plugin": ["@varlock/bitwarden-plugin@0.0.5", "", { "peerDependencies": { "varlock": "^0.6.0" } }, "sha512-grTRiEg2FE7X3qov4upyaEgs22vgYRdOd67n1CChMSuhYtlVilddA71Nrn6P+1oHRKMv1t+A7oAEr5t9s64cRA=="],
+    "@varlock/bitwarden-plugin": ["@varlock/bitwarden-plugin@0.0.6", "", { "peerDependencies": { "varlock": "^0.7.0" } }, "sha512-38eibxn/2AXlPjk/6b/SLQrtpdaqfEHIvzNcY36a1Hw0hokXReRCnpGeuV95BsR2b3JJIqtIbGZ/2uwFkCHVtw=="],
 
-    "@varlock/vite-integration": ["@varlock/vite-integration@0.2.7", "", { "peerDependencies": { "varlock": "^0.6.3", "vite": ">=5" } }, "sha512-HXgu94wosyKdU6J3oj7mZA/jmwPcqzoX4dOqKIu8fXccFVjg5QdaDz9jR2PasmhwiICmUjH69y3e8rzm/bZfag=="],
+    "@varlock/vite-integration": ["@varlock/vite-integration@0.2.10", "", { "peerDependencies": { "varlock": "^0.7.2", "vite": ">=5" } }, "sha512-awd2fSWA/p/kR6eqX4+qCiVqVHhnMt01sjHCIBcuNq7qyTmyaet+9MSdPHd8TykeiectJhGPodzMj4Zw6cy8gA=="],
 
     "@vitejs/plugin-react": ["@vitejs/plugin-react@5.2.0", "", { "dependencies": { "@babel/core": "^7.29.0", "@babel/plugin-transform-react-jsx-self": "^7.27.1", "@babel/plugin-transform-react-jsx-source": "^7.27.1", "@rolldown/pluginutils": "1.0.0-rc.3", "@types/babel__core": "^7.20.5", "react-refresh": "^0.18.0" }, "peerDependencies": { "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0" } }, "sha512-YmKkfhOAi3wsB1PhJq5Scj3GXMn3WvtQ/JC0xoopuHoXSdmtdStOpFrYaT1kie2YgFBcIe64ROzMYRjCrYOdYw=="],
 
@@ -1272,7 +1272,7 @@
 
     "use-sync-external-store": ["use-sync-external-store@1.6.0", "", { "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w=="],
 
-    "varlock": ["varlock@0.6.3", "", { "bin": { "varlock": "bin/cli.js" } }, "sha512-cIeXMs7Vhw9LCz1mZFJjxaBD2Z+rIpVMK49tYnZT7lNWO5Ey6vyCaW+B2IsL5zufuyNMxG1UvK5FZnfI5kVFBQ=="],
+    "varlock": ["varlock@0.9.0", "", { "bin": { "varlock": "bin/cli.js" } }, "sha512-Lau2o5t9Y99MsHvWhlr3jvCOQUyCjUud8/QfjOOw+acuGgLUX3ZXRlp6M8a6kiFfVoQ8Jrc/4mOGFn8ZwWwfBQ=="],
 
     "vfile": ["vfile@6.0.3", "", { "dependencies": { "@types/unist": "^3.0.0", "vfile-message": "^4.0.0" } }, "sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q=="],
 
