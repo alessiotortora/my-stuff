@@ -30,7 +30,7 @@
     "varlock": "^0.6.3"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.30.0",
+    "@cloudflare/vite-plugin": "^1.33.1",
     "@repo/typescript-config": "*",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
