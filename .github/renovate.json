@@ -15,21 +15,15 @@
     },
     {
       "groupName": "tanstack",
-      "matchPackageNames": [
-        "/^@tanstack//"
-      ]
+      "matchPackageNames": ["/^@tanstack//"]
     },
     {
       "groupName": "base-ui",
-      "matchPackageNames": [
-        "/^@base-ui/"
-      ]
+      "matchPackageNames": ["/^@base-ui/"]
     },
     {
       "groupName": "hugeicons",
-      "matchPackageNames": [
-        "/^@hugeicons//"
-      ]
+      "matchPackageNames": ["/^@hugeicons//"]
     },
     {
       "groupName": "react",
@@ -42,9 +36,7 @@
     },
     {
       "groupName": "tailwind",
-      "matchPackageNames": [
-        "/tailwind/"
-      ]
+      "matchPackageNames": ["/tailwind/"]
     },
     {
       "groupName": "biome / ultracite",
@@ -52,10 +44,7 @@
     },
     {
       "groupName": "varlock",
-      "matchPackageNames": [
-        "/^varlock/",
-        "/^@varlock//"
-      ]
+      "matchPackageNames": ["/^varlock/", "/^@varlock//"]
     }
   ],
   "vulnerabilityAlerts": {
