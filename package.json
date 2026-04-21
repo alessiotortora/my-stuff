@@ -10,12 +10,12 @@
     "prepare": "lefthook install"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.7",
-    "@varlock/bitwarden-plugin": "^0.0.5",
+    "@biomejs/biome": "2.4.12",
+    "@varlock/bitwarden-plugin": "^0.0.6",
     "lefthook": "^2.1.6",
     "turbo": "^2.9.6",
-    "typescript": "5.8.2",
-    "ultracite": "7.3.2"
+    "typescript": "5.9.3",
+    "ultracite": "7.6.0"
   },
   "engines": {
     "node": ">=18.20.8"
@@ -26,9 +26,9 @@
     "packages/*"
   ],
   "dependencies": {
-    "@varlock/vite-integration": "^0.2.7",
+    "@varlock/vite-integration": "^0.2.10",
     "date-fns": "^4.1.0",
-    "varlock": "^0.6.3"
+    "varlock": "^0.9.0"
   },
   "overrides": {
     "@types/react": "^19.2.14",

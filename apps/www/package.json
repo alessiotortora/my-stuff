@@ -16,18 +16,18 @@
     "@mdx-js/rollup": "^3.1.1",
     "@posthog/react": "^1.9.0",
     "@repo/ui": "*",
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.2.4",
     "@tanstack/react-router": "latest",
     "@tanstack/react-start": "latest",
     "@types/mdx": "^2.0.13",
-    "@varlock/bitwarden-plugin": "^0.0.5",
-    "@varlock/vite-integration": "^0.2.7",
+    "@varlock/bitwarden-plugin": "^0.0.6",
+    "@varlock/vite-integration": "^0.2.10",
     "motion": "^12.38.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-use-measure": "^2.1.7",
-    "tailwindcss": "^4.1.18",
-    "varlock": "^0.6.3"
+    "tailwindcss": "^4.2.4",
+    "varlock": "^0.9.0"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.33.1",
@@ -35,9 +35,9 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.2.0",
-    "typescript": "5.8.2",
+    "typescript": "5.9.3",
     "vite": "^7.3.2",
     "vite-tsconfig-paths": "^6.1.1",
-    "wrangler": "^4.76.0"
+    "wrangler": "^4.84.1"
   }
 }

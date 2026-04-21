@@ -15,15 +15,15 @@
     },
     {
       "groupName": "tanstack",
-      "matchPackagePatterns": ["^@tanstack/"]
+      "matchPackageNames": ["/^@tanstack//"]
     },
     {
       "groupName": "base-ui",
-      "matchPackagePatterns": ["^@base-ui"]
+      "matchPackageNames": ["/^@base-ui/"]
     },
     {
       "groupName": "hugeicons",
-      "matchPackagePatterns": ["^@hugeicons/"]
+      "matchPackageNames": ["/^@hugeicons//"]
     },
     {
       "groupName": "react",
@@ -36,7 +36,7 @@
     },
     {
       "groupName": "tailwind",
-      "matchPackagePatterns": ["tailwind"]
+      "matchPackageNames": ["/tailwind/"]
     },
     {
       "groupName": "biome / ultracite",
@@ -44,7 +44,7 @@
     },
     {
       "groupName": "varlock",
-      "matchPackagePatterns": ["^varlock", "^@varlock/"]
+      "matchPackageNames": ["/^varlock/", "/^@varlock//"]
     }
   ],
   "vulnerabilityAlerts": {
