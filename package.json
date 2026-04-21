@@ -18,7 +18,7 @@
     "ultracite": "7.3.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18.20.8"
   },
   "packageManager": "bun@1.2.10",
   "workspaces": [
