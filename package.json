@@ -13,7 +13,7 @@
     "@biomejs/biome": "2.4.7",
     "@varlock/bitwarden-plugin": "^0.0.5",
     "lefthook": "^2.1.6",
-    "turbo": "^2.5.2",
+    "turbo": "^2.9.6",
     "typescript": "5.8.2",
     "ultracite": "7.3.2"
   },
