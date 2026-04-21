@@ -1,10 +1,11 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
+import { z } from "zod";
 
 const posts = defineCollection({
   name: "posts",
   directory: "content",
   include: "**/*.md",
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     date: z.string(),
     description: z.string().optional(),
@@ -13,5 +14,4 @@ const posts = defineCollection({
 
 export default defineConfig({
   collections: [posts],
-  // biome-ignore lint/suspicious/noExplicitAny: content-collections config type references non-portable zod internals
-}) as any;
+});
