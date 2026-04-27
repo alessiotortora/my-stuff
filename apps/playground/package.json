@@ -23,7 +23,7 @@
     "varlock": "^0.9.0"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.33.1",
+    "@cloudflare/vite-plugin": "^1.33.2",
     "@content-collections/core": "^0.15.0",
     "@content-collections/vite": "^0.3.0",
     "@repo/typescript-config": "*",
