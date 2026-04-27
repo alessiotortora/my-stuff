@@ -10,12 +10,12 @@
     "prepare": "lefthook install"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.12",
+    "@biomejs/biome": "2.4.13",
     "@varlock/bitwarden-plugin": "^0.0.6",
     "lefthook": "^2.1.6",
     "turbo": "^2.9.6",
     "typescript": "6.0.3",
-    "ultracite": "7.6.0"
+    "ultracite": "7.6.2"
   },
   "engines": {
     "node": ">=18.20.8"
