@@ -22,7 +22,9 @@ export const mdxComponents = {
     <h3 className="mt-8 mb-3 font-medium text-[0.875rem]" {...props} />
   ),
   h4: (props: HeadingProps) => <h4 className="font-medium" {...props} />,
-  p: (props: ParagraphProps) => <p className="leading-snug" {...props} />,
+  p: (props: ParagraphProps) => (
+    <p className="mb-4 leading-snug last:mb-0" {...props} />
+  ),
   ol: (props: ListProps) => (
     <ol className="list-decimal space-y-2 pl-5" {...props} />
   ),

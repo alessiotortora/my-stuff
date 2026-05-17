@@ -8,8 +8,9 @@ export function WritingSection() {
       href: "/writing/stack",
     },
     {
-      label: "Rise of AI",
-      description: "A collection of my thoughts on the rise of AI",
+      label: "Use AI as a tool to be faster and smarter",
+      description:
+        "Why I lean into AI daily — and where to keep your own brain in the loop",
       href: "/writing/ai",
     },
   ];
