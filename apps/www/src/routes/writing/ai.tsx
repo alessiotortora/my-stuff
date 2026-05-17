@@ -7,7 +7,7 @@ export const Route = createFileRoute("/writing/ai")({
   component: AiPage,
   head: () => ({
     meta: [
-      { title: "The Rise of AI: A Developer's Perspective | Alessio Tortora" },
+      { title: "Use AI as a tool to be faster and smarter | Alessio Tortora" },
     ],
   }),
 });

@@ -1,48 +1,27 @@
 # My Stack
 
+This is what I reach for when I want to build something fast without giving up control. It changes over time, but the current setup is the most fun I've had shipping side projects.
 
-This setup helps me stay focused, build real things in my limited free time, and continuously learn in the process. The tools I use help me stay focused, build fast, and understand what I'm working on without getting stuck in unnecessary complexity.
+## Frameworks: TanStack Start & Astro
 
-## Framework: React & Next.js
+I use [TanStack Start](https://tanstack.com/start) for apps where I need real state, server functions, and a proper router. [Astro](https://astro.build/) is what I pick for content-heavy sites where most of the page should ship as HTML and the interactive bits stay islands.
 
-Most of my projects start with **React** or **Next.js**. They're fast to spin up, come with battle-tested patterns, and have a thriving community. I prefer tools that remove friction, and both of these make the development process smooth without being overly opinionated.
+## API: Hono & oRPC
 
-## Database: PostgreSQL with Supabase
+[Hono](https://hono.dev/) is a tiny, fast web framework that runs anywhere — Workers, Bun, Node — and gets out of the way. On top of it I use [oRPC](https://orpc.unnoq.com/) for end-to-end type safety, so calling a procedure from the client feels like calling a local function.
 
-I stick with **Postgres** for most of my data needs, and **Supabase** adds just the right amount of magic:
+## Database: PostgreSQL + Drizzle
 
-- Real-time updates
-- Auth and row-level security
-- Edge functions and storage
+Postgres is my default. [Drizzle ORM](https://orm.drizzle.team/) makes it pleasant: schemas live in TypeScript, migrations are diff-based, and the types flow straight through the rest of the app.
 
-The out-of-the-box features are great for building full-stack apps without maintaining a ton of infrastructure.
+## Styling: Tailwind & shadcn/ui
 
-## Auth: better-auth
+[Tailwind](https://tailwindcss.com/) for the utility-first speed; [shadcn/ui](https://ui.shadcn.com/) for accessible primitives I can paste in and reshape. Together they cover almost every UI I need to build, without locking me into someone else's design system.
 
-I recently discovered **better-auth**, and the developer experience is excellent. It’s simple to integrate, plays nicely with modern frameworks, and keeps the setup light while still giving you the flexibility you need for real-world auth flows.
+## Animation: Motion & GSAP
 
-## ORM: Drizzle
+For most interactions, [Motion](https://motion.dev/) is enough — it's React-native, the API is great, and springs are first-class. When I need timeline-based choreography or scroll-driven sequences, I reach for [GSAP](https://gsap.com/) instead.
 
-I use **Drizzle ORM** to work with Postgres. It’s built with TypeScript in mind and makes schema management straightforward. It offers:
+## AI: Claude Code & Cursor
 
-- First-class TypeScript types
-- Code-based schema definitions
-- A clean and simple migration system
-
-This makes it easy to evolve your schema as the app grows without losing confidence in your data layer.
-
-## Styling: Tailwind CSS + shadcn/ui
-
-My UI workflow revolves around **Tailwind CSS** and **shadcn/ui**. Tailwind gives me utility-first styling that keeps my code expressive but lean. When I need components that are already accessible and well-designed, **shadcn/ui** has me covered.
-
-Together, they let me build UIs quickly without sacrificing flexibility or maintainability.
-
-## AI Tools: v0, Cursor, ChatGPT
-
-AI tools have become a core part of my workflow, especially for side projects. Since they're trained on many of the tools I use (like React, Next.js, Drizzle, and Tailwind), they help me:
-
-- Debug and explain unfamiliar code
-- Refactor repetitive patterns
-- Prototype ideas and validate architecture
-
-I use **v0** for UI scaffolding, **Cursor** as my editor with AI assistance built-in, and **ChatGPT** when I need to dive deeper into a concept. These tools don’t just help me move faster—they help me understand the *why* behind the code.
+[Claude Code](https://claude.com/claude-code) in the terminal for bigger refactors and multi-file work; [Cursor](https://cursor.com/) when I want AI inside the editor with quick inline edits. Both feel less like "autocomplete" and more like a collaborator that's read the codebase.
