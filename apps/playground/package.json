@@ -17,6 +17,8 @@
     "@tanstack/react-start": "latest",
     "@varlock/bitwarden-plugin": "^0.0.6",
     "@varlock/cloudflare-integration": "^0.1.0",
+    "lenis": "^1.3.4",
+    "motion": "^12.38.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "tailwindcss": "^4.2.4",
