@@ -9,38 +9,64 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AnimationsRouteRouteImport } from './routes/animations/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnimationsSlugRouteImport } from './routes/animations/$slug'
 
+const AnimationsRouteRoute = AnimationsRouteRouteImport.update({
+  id: '/animations',
+  path: '/animations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnimationsSlugRoute = AnimationsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AnimationsRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRouteRouteWithChildren
+  '/animations/$slug': typeof AnimationsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRouteRouteWithChildren
+  '/animations/$slug': typeof AnimationsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/animations': typeof AnimationsRouteRouteWithChildren
+  '/animations/$slug': typeof AnimationsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/animations' | '/animations/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/animations' | '/animations/$slug'
+  id: '__root__' | '/' | '/animations' | '/animations/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnimationsRouteRoute: typeof AnimationsRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/animations': {
+      id: '/animations'
+      path: '/animations'
+      fullPath: '/animations'
+      preLoaderRoute: typeof AnimationsRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +74,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/animations/$slug': {
+      id: '/animations/$slug'
+      path: '/$slug'
+      fullPath: '/animations/$slug'
+      preLoaderRoute: typeof AnimationsSlugRouteImport
+      parentRoute: typeof AnimationsRouteRoute
+    }
   }
 }
 
+interface AnimationsRouteRouteChildren {
+  AnimationsSlugRoute: typeof AnimationsSlugRoute
+}
+
+const AnimationsRouteRouteChildren: AnimationsRouteRouteChildren = {
+  AnimationsSlugRoute: AnimationsSlugRoute,
+}
+
+const AnimationsRouteRouteWithChildren = AnimationsRouteRoute._addFileChildren(
+  AnimationsRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnimationsRouteRoute: AnimationsRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
