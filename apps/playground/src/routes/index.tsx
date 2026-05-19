@@ -11,6 +11,7 @@ const ANIMATIONS = [
   "exposure",
   "fake-3d-stack",
   "folder",
+  "infinite-world",
   "menu",
   "morph",
   "swipe",
