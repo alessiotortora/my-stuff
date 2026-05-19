@@ -6,6 +6,7 @@ import Cursor from "#/animations/cursor";
 import Exposure from "#/animations/exposure";
 import FakeThreeDStack from "#/animations/fake-3d-stack";
 import Folder from "#/animations/folder";
+import InfiniteWorld from "#/animations/infinite-world";
 import Menu from "#/animations/menu";
 import Morph from "#/animations/morph";
 import Swipe from "#/animations/swipe";
@@ -18,6 +19,7 @@ const ANIMATIONS: Record<string, ComponentType> = {
   exposure: Exposure,
   "fake-3d-stack": FakeThreeDStack,
   folder: Folder,
+  "infinite-world": InfiniteWorld,
   menu: Menu,
   morph: Morph,
   swipe: Swipe,
@@ -31,6 +33,7 @@ const HINTS: Record<string, string> = {
   exposure: "drag the strip left or right",
   "fake-3d-stack": "scroll inside the panel",
   folder: "click the folder to open",
+  "infinite-world": "drag or scroll to pan",
   menu: "hover the nav items",
   morph: "click a card to expand",
   swipe: "swipe the mail left or right",
