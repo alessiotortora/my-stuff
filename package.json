@@ -12,7 +12,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
     "@varlock/bitwarden-plugin": "^0.0.6",
-    "lefthook": "^2.1.6",
+    "lefthook": "^2.1.8",
     "turbo": "^2.9.6",
     "typescript": "6.0.3",
     "ultracite": "7.7.0"
