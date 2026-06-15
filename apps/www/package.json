@@ -19,7 +19,7 @@
     "@tailwindcss/vite": "^4.2.4",
     "@tanstack/react-router": "latest",
     "@tanstack/react-start": "latest",
-    "@types/mdx": "^2.0.13",
+    "@types/mdx": "^2.0.14",
     "@varlock/bitwarden-plugin": "^0.0.6",
     "@varlock/cloudflare-integration": "^0.1.0",
     "motion": "^12.38.0",
