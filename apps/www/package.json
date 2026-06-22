@@ -21,13 +21,13 @@
     "@tanstack/react-start": "latest",
     "@types/mdx": "^2.0.14",
     "@varlock/bitwarden-plugin": "^0.0.6",
-    "@varlock/cloudflare-integration": "^0.1.0",
+    "@varlock/cloudflare-integration": "^0.1.1",
     "motion": "^12.38.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-use-measure": "^2.1.7",
     "tailwindcss": "^4.2.4",
-    "varlock": "^0.9.0"
+    "varlock": "^0.9.1"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.33.2",

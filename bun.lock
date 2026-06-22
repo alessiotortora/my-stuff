@@ -5,9 +5,9 @@
     "": {
       "name": "my-stuff",
       "dependencies": {
-        "@varlock/cloudflare-integration": "^0.1.0",
+        "@varlock/cloudflare-integration": "^0.1.1",
         "date-fns": "^4.1.0",
-        "varlock": "^0.9.0",
+        "varlock": "^0.9.1",
       },
       "devDependencies": {
         "@biomejs/biome": "2.4.16",
@@ -29,11 +29,11 @@
         "@tanstack/react-router": "latest",
         "@tanstack/react-start": "latest",
         "@varlock/bitwarden-plugin": "^0.0.6",
-        "@varlock/cloudflare-integration": "^0.1.0",
+        "@varlock/cloudflare-integration": "^0.1.1",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
         "tailwindcss": "^4.2.4",
-        "varlock": "^0.9.0",
+        "varlock": "^0.9.1",
       },
       "devDependencies": {
         "@cloudflare/vite-plugin": "^1.33.2",
@@ -57,13 +57,13 @@
         "@tanstack/react-router": "latest",
         "@tanstack/react-start": "latest",
         "@varlock/bitwarden-plugin": "^0.0.6",
-        "@varlock/cloudflare-integration": "^0.1.0",
+        "@varlock/cloudflare-integration": "^0.1.1",
         "lenis": "^1.3.23",
         "motion": "^12.38.0",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
         "tailwindcss": "^4.2.4",
-        "varlock": "^0.9.0",
+        "varlock": "^0.9.1",
       },
       "devDependencies": {
         "@cloudflare/vite-plugin": "^1.33.2",
@@ -95,13 +95,13 @@
         "@tanstack/react-start": "latest",
         "@types/mdx": "^2.0.14",
         "@varlock/bitwarden-plugin": "^0.0.6",
-        "@varlock/cloudflare-integration": "^0.1.0",
+        "@varlock/cloudflare-integration": "^0.1.1",
         "motion": "^12.38.0",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
         "react-use-measure": "^2.1.7",
         "tailwindcss": "^4.2.4",
-        "varlock": "^0.9.0",
+        "varlock": "^0.9.1",
       },
       "devDependencies": {
         "@cloudflare/vite-plugin": "^1.33.2",
@@ -674,7 +674,7 @@
 
     "@varlock/bitwarden-plugin": ["@varlock/bitwarden-plugin@0.0.6", "", { "peerDependencies": { "varlock": "^0.7.0" } }, "sha512-38eibxn/2AXlPjk/6b/SLQrtpdaqfEHIvzNcY36a1Hw0hokXReRCnpGeuV95BsR2b3JJIqtIbGZ/2uwFkCHVtw=="],
 
-    "@varlock/cloudflare-integration": ["@varlock/cloudflare-integration@0.1.0", "", { "peerDependencies": { "@cloudflare/vite-plugin": ">=1", "varlock": "^0.9.0", "vite": ">=5", "wrangler": ">=3" }, "optionalPeers": ["@cloudflare/vite-plugin", "vite", "wrangler"], "bin": { "varlock-wrangler": "bin/varlock-wrangler.js" } }, "sha512-2fIjRUEJfqvSIMch4T3//iEQWI5umPV0MMU0HfkuqKAcaou6mN8UIbRY6XPoeKFXoPe/cFo6jwWEiigfl8fxrQ=="],
+    "@varlock/cloudflare-integration": ["@varlock/cloudflare-integration@0.1.1", "", { "peerDependencies": { "@cloudflare/vite-plugin": ">=1", "varlock": "^0.9.1", "vite": ">=5", "wrangler": ">=3" }, "optionalPeers": ["@cloudflare/vite-plugin", "vite", "wrangler"], "bin": { "varlock-wrangler": "bin/varlock-wrangler.js" } }, "sha512-L0XeeRIcYvcD7bXZKEynn7mM/CLB9jrVlp45Jz+melM/IMNF3Wm4tAfIogEDpIMyKfTti+bFo8fg0UyfosIHyw=="],
 
     "@vitejs/plugin-react": ["@vitejs/plugin-react@6.0.2", "", { "dependencies": { "@rolldown/pluginutils": "^1.0.0" }, "peerDependencies": { "@rolldown/plugin-babel": "^0.1.7 || ^0.2.0", "babel-plugin-react-compiler": "^1.0.0", "vite": "^8.0.0" }, "optionalPeers": ["@rolldown/plugin-babel", "babel-plugin-react-compiler"] }, "sha512-DlSMqo4WhThw4vB8Mpn0Woe9J+Jfq1geJ61AKW0QEgLzGMNwtIMdxbDUzLxcun8W7NbJO0e2Jg/Nxm3cCSVzzg=="],
 
@@ -1206,7 +1206,7 @@
 
     "use-sync-external-store": ["use-sync-external-store@1.6.0", "", { "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w=="],
 
-    "varlock": ["varlock@0.9.0", "", { "bin": { "varlock": "bin/cli.js" } }, "sha512-Lau2o5t9Y99MsHvWhlr3jvCOQUyCjUud8/QfjOOw+acuGgLUX3ZXRlp6M8a6kiFfVoQ8Jrc/4mOGFn8ZwWwfBQ=="],
+    "varlock": ["varlock@0.9.1", "", { "bin": { "varlock": "bin/cli.js" } }, "sha512-AMF41b5Pqo7rOOBK5mXuR+Jv++R/jeq9T9KdWCiYXD4ARZKH6MWbe0N/2JKpSPPDpiCWD2tlRLDPfh/gHAavkg=="],
 
     "vfile": ["vfile@6.0.3", "", { "dependencies": { "@types/unist": "^3.0.0", "vfile-message": "^4.0.0" } }, "sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q=="],
 
