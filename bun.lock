@@ -40,7 +40,7 @@
         "@repo/typescript-config": "*",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
-        "@vitejs/plugin-react": "^6.0.2",
+        "@vitejs/plugin-react": "^6.0.3",
         "typescript": "6.0.3",
         "vite": "^8.0.16",
         "vite-tsconfig-paths": "^6.1.1",
@@ -72,7 +72,7 @@
         "@repo/typescript-config": "*",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
-        "@vitejs/plugin-react": "^6.0.2",
+        "@vitejs/plugin-react": "^6.0.3",
         "typescript": "6.0.3",
         "vite": "^8.0.16",
         "vite-tsconfig-paths": "^6.1.1",
@@ -108,7 +108,7 @@
         "@repo/typescript-config": "*",
         "@types/react": "^19.2.17",
         "@types/react-dom": "^19.2.3",
-        "@vitejs/plugin-react": "^6.0.2",
+        "@vitejs/plugin-react": "^6.0.3",
         "typescript": "6.0.3",
         "vite": "^8.0.16",
         "vite-tsconfig-paths": "^6.1.1",
@@ -676,7 +676,7 @@
 
     "@varlock/cloudflare-integration": ["@varlock/cloudflare-integration@0.1.1", "", { "peerDependencies": { "@cloudflare/vite-plugin": ">=1", "varlock": "^0.9.1", "vite": ">=5", "wrangler": ">=3" }, "optionalPeers": ["@cloudflare/vite-plugin", "vite", "wrangler"], "bin": { "varlock-wrangler": "bin/varlock-wrangler.js" } }, "sha512-L0XeeRIcYvcD7bXZKEynn7mM/CLB9jrVlp45Jz+melM/IMNF3Wm4tAfIogEDpIMyKfTti+bFo8fg0UyfosIHyw=="],
 
-    "@vitejs/plugin-react": ["@vitejs/plugin-react@6.0.2", "", { "dependencies": { "@rolldown/pluginutils": "^1.0.0" }, "peerDependencies": { "@rolldown/plugin-babel": "^0.1.7 || ^0.2.0", "babel-plugin-react-compiler": "^1.0.0", "vite": "^8.0.0" }, "optionalPeers": ["@rolldown/plugin-babel", "babel-plugin-react-compiler"] }, "sha512-DlSMqo4WhThw4vB8Mpn0Woe9J+Jfq1geJ61AKW0QEgLzGMNwtIMdxbDUzLxcun8W7NbJO0e2Jg/Nxm3cCSVzzg=="],
+    "@vitejs/plugin-react": ["@vitejs/plugin-react@6.0.3", "", { "dependencies": { "@rolldown/pluginutils": "^1.0.1" }, "peerDependencies": { "@rolldown/plugin-babel": "^0.1.7 || ^0.2.0", "babel-plugin-react-compiler": "^1.0.0", "vite": "^8.0.0" }, "optionalPeers": ["@rolldown/plugin-babel", "babel-plugin-react-compiler"] }, "sha512-vmFvco5/QuC2f9Oj+wTk0+9XeDFkHxSamwZKYc7MxYwKICfvUvlMhqKI0VuICPltGqh1neqBKDvO4kes1ya8vg=="],
 
     "acorn": ["acorn@8.16.0", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw=="],
 
