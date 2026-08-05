@@ -23,8 +23,8 @@
     "@varlock/bitwarden-plugin": "^0.0.6",
     "@varlock/cloudflare-integration": "^0.1.1",
     "motion": "^12.38.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "react-use-measure": "^2.1.7",
     "tailwindcss": "^4.2.4",
     "varlock": "^0.9.1"
@@ -32,8 +32,8 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.51.0",
     "@repo/typescript-config": "*",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.0.5",
     "typescript": "6.0.3",
     "vite": "^8.0.16",
