@@ -68,9 +68,9 @@ function DriftCard({
   const [relativeZIndex, setRelativeZIndex] = useState(initialZIndex);
   const scale = useMotionValue(1);
   const springScale = useSpring(scale, {
-    stiffness: 100,
     damping: 10,
     mass: 0.5,
+    stiffness: 100,
   });
 
   const loopedProgress = useTransform(
@@ -100,10 +100,10 @@ function DriftCard({
       className="absolute flex items-center justify-center"
       style={{
         height: CARD_HEIGHT,
-        width: CARD_WIDTH,
         top: -CARD_HEIGHT / 2,
-        zIndex: relativeZIndex,
         transform,
+        width: CARD_WIDTH,
+        zIndex: relativeZIndex,
       }}
     >
       {children}
@@ -117,10 +117,10 @@ function DriftCards({ width, height }: { width: number; height: number }) {
       <ReactLenis
         className="scrollbar-none h-full w-full overflow-hidden rounded-sm"
         options={{
+          duration: 2,
           infinite: true,
           syncTouch: true,
           syncTouchLerp: 0.2,
-          duration: 2,
         }}
       >
         <div className="h-[1000px] w-full" />
@@ -150,14 +150,14 @@ function DriftCards({ width, height }: { width: number; height: number }) {
 
 export default function Drift() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
 
   useEffect(() => {
     const update = () => {
       if (containerRef.current) {
         setDimensions({
-          width: containerRef.current.offsetWidth,
           height: containerRef.current.offsetHeight,
+          width: containerRef.current.offsetWidth,
         });
       }
     };

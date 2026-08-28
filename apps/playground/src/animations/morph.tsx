@@ -3,56 +3,56 @@ import { useCallback, useState } from "react";
 
 const cards = [
   {
-    id: 1,
     color: "#e74c3c",
-    label: "Red",
     description: "Warm and energetic — draws attention, evokes passion.",
+    id: 1,
+    label: "Red",
   },
   {
-    id: 2,
     color: "#3498db",
-    label: "Blue",
     description: "Calm and trustworthy — associated with depth and stability.",
+    id: 2,
+    label: "Blue",
   },
   {
-    id: 3,
     color: "#2ecc71",
-    label: "Green",
     description: "Refreshing — symbolises growth and harmony.",
+    id: 3,
+    label: "Green",
   },
   {
-    id: 4,
     color: "#f39c12",
-    label: "Orange",
     description: "Vibrant and friendly — radiates warmth and creativity.",
+    id: 4,
+    label: "Orange",
   },
   {
-    id: 5,
     color: "#9b59b6",
-    label: "Purple",
     description: "Rich and mysterious — linked to imagination and wisdom.",
+    id: 5,
+    label: "Purple",
   },
   {
-    id: 6,
     color: "#1abc9c",
-    label: "Teal",
     description: "A blend of blue and green that evokes clarity.",
+    id: 6,
+    label: "Teal",
   },
 ];
 
 function makePlaylist(prefix: string) {
   return [
-    { id: `${prefix}-1`, title: "Track One", artist: "Artist A" },
-    { id: `${prefix}-2`, title: "Track Two", artist: "Artist B" },
-    { id: `${prefix}-3`, title: "Track Three", artist: "Artist C" },
-    { id: `${prefix}-4`, title: "Track Four", artist: "Artist D" },
-    { id: `${prefix}-5`, title: "Track Five", artist: "Artist E" },
+    { artist: "Artist A", id: `${prefix}-1`, title: "Track One" },
+    { artist: "Artist B", id: `${prefix}-2`, title: "Track Two" },
+    { artist: "Artist C", id: `${prefix}-3`, title: "Track Three" },
+    { artist: "Artist D", id: `${prefix}-4`, title: "Track Four" },
+    { artist: "Artist E", id: `${prefix}-5`, title: "Track Five" },
   ];
 }
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
+  for (let i = a.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
     const tmp = a[i] as T;
     a[i] = a[j] as T;
@@ -75,8 +75,8 @@ function Toggle({
       className="flex select-none items-center gap-2 rounded-full border px-4 py-2 font-medium text-sm transition-colors"
       onClick={onToggle}
       style={{
-        borderColor: enabled ? "#2ecc71" : "#ccc",
         backgroundColor: enabled ? "#eafaf1" : "#fafafa",
+        borderColor: enabled ? "#2ecc71" : "#ccc",
         color: enabled ? "#1a7a4c" : "#666",
       }}
       type="button"
@@ -184,7 +184,7 @@ export default function Morph() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   onClick={(e) => e.stopPropagation()}
                   style={{ backgroundColor: selected.color }}
-                  transition={{ type: "spring", duration: 0.5 }}
+                  transition={{ duration: 0.5, type: "spring" }}
                 >
                   <span className="font-bold text-2xl">{selected.label}</span>
                   <p className="text-center text-sm text-white/80">

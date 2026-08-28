@@ -10,25 +10,25 @@ import { Providers } from "#/providers";
 import appCss from "#/styles.css?url";
 
 export const Route = createRootRoute({
+  component: RootComponent,
   head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Alessio's Portfolio" },
+    links: [
+      { href: appCss, rel: "stylesheet" },
       {
-        name: "description",
-        content: "Brief introduction to my work and skills",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap",
+        rel: "stylesheet",
       },
     ],
-    links: [
-      { rel: "stylesheet", href: appCss },
+    meta: [
+      { charSet: "utf-8" },
+      { content: "width=device-width, initial-scale=1", name: "viewport" },
+      { title: "Alessio's Portfolio" },
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap",
+        content: "Brief introduction to my work and skills",
+        name: "description",
       },
     ],
   }),
-  component: RootComponent,
   notFoundComponent: NotFound,
 });
 

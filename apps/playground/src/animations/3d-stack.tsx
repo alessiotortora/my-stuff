@@ -65,17 +65,17 @@ export default function Stack() {
   const scrollRef = useRef(0);
 
   const transformCache = useRef({
-    z: [] as number[],
     dx: [] as number[],
     dy: [] as number[],
-    zIndex: [] as number[],
     willChange: [] as string[],
+    z: [] as number[],
+    zIndex: [] as number[],
   });
 
   const momentum = useRef({
-    velocity: 0,
-    touchStartY: null as number | null,
     lastTime: 0,
+    touchStartY: null as number | null,
+    velocity: 0,
   });
 
   const wheel = useRef({
@@ -90,8 +90,8 @@ export default function Stack() {
   });
 
   const animation = useRef({
-    rafId: null as number | null,
     lastFrameTime: 0,
+    rafId: null as number | null,
   });
 
   const cardData = useMemo(
@@ -122,7 +122,7 @@ export default function Stack() {
     // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: physics loop is naturally branchy; refactoring would harm readability
     const applyTransforms = () => {
       const scrollPos = scrollRef.current;
-      const totalRange = geometry.current.totalRange;
+      const { totalRange } = geometry.current;
       const halfRange = totalRange / 2;
       const cache = transformCache.current;
 
@@ -133,7 +133,7 @@ export default function Stack() {
         TOTAL_CARDS
       );
 
-      for (let i = 0; i < TOTAL_CARDS; i++) {
+      for (let i = 0; i < TOTAL_CARDS; i += 1) {
         const el = cardRefs.current[i];
         if (!el) {
           continue;
@@ -253,6 +253,7 @@ export default function Stack() {
 
     const handleTouchStart = (e: TouchEvent) => {
       stopMomentum();
+      // biome-ignore lint/style/useDestructuring: TouchList is not iterable
       const first = e.touches[0];
       if (first) {
         momentum.current.touchStartY = first.clientY;
@@ -262,6 +263,7 @@ export default function Stack() {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
+      // biome-ignore lint/style/useDestructuring: TouchList is not iterable
       const first = e.touches[0];
       if (momentum.current.touchStartY === null || !first) {
         return;
@@ -287,11 +289,11 @@ export default function Stack() {
 
     recomputeGeometry();
     transformCache.current = {
-      z: [],
       dx: [],
       dy: [],
-      zIndex: [],
       willChange: [],
+      z: [],
+      zIndex: [],
     };
     animation.current.lastFrameTime = performance.now();
     applyTransforms();
@@ -336,17 +338,17 @@ export default function Stack() {
               cardRefs.current[index] = el;
             }}
             style={{
-              width: CARD_WIDTH,
               height: CARD_HEIGHT,
               transform: "translate3d(-50%, -50%, 0px)",
+              width: CARD_WIDTH,
             }}
           >
             <div
               className="absolute inset-0 flex -rotate-z-18 items-center justify-center rounded-sm border border-white/10"
               style={{
-                width: CARD_WIDTH,
-                height: CARD_HEIGHT,
                 backgroundColor: card.color,
+                height: CARD_HEIGHT,
+                width: CARD_WIDTH,
               }}
             >
               <span className="select-none font-semibold text-[10px] text-white drop-shadow-lg">

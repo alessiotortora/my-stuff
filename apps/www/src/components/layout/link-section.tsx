@@ -3,11 +3,11 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { Button } from "@repo/ui/components/button";
 
 const links = [
-  { label: "Email", href: "mailto:hello@alessiotortora.com" },
-  { label: "CV", href: "https://cv.alessiotortora.com" },
-  { label: "GitHub", href: "https://github.com/alessiotortora" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/alessiotortora" },
-  { label: "X", href: "https://x.com/alessiotortora_" },
+  { href: "mailto:hello@alessiotortora.com", label: "Email" },
+  { href: "https://cv.alessiotortora.com", label: "CV" },
+  { href: "https://github.com/alessiotortora", label: "GitHub" },
+  { href: "https://www.linkedin.com/in/alessiotortora", label: "LinkedIn" },
+  { href: "https://x.com/alessiotortora_", label: "X" },
 ];
 
 export function LinkSection() {

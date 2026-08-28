@@ -3,15 +3,15 @@ import { Link } from "@tanstack/react-router";
 export function WritingSection() {
   const writings = [
     {
-      label: "My Stack",
       description: "A list of my favorite tools and technologies",
       href: "/writing/stack",
+      label: "My Stack",
     },
     {
-      label: "Use AI as a tool to be faster and smarter",
       description:
         "Why I lean into AI daily — and where to keep your own brain in the loop",
       href: "/writing/ai",
+      label: "Use AI as a tool to be faster and smarter",
     },
   ];
 

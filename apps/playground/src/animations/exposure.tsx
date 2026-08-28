@@ -107,7 +107,7 @@ function ExposureNotch({
       transition={
         state === "ACTIVE"
           ? { type: false }
-          : { type: "spring", bounce: 0.2, duration: 0.8 }
+          : { bounce: 0.2, duration: 0.8, type: "spring" }
       }
     />
   );
@@ -258,9 +258,9 @@ export default function Exposure() {
           <motion.div
             className="exp-subject-fill"
             style={{
-              filter,
               background:
                 "linear-gradient(135deg, #f97316 0%, #db2777 35%, #6366f1 70%, #0ea5e9 100%)",
+              filter,
             }}
           />
         </div>

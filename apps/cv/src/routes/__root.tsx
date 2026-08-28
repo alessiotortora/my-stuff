@@ -9,22 +9,22 @@ import {
 import appCss from "#/styles.css?url";
 
 export const Route = createRootRoute({
+  component: RootComponent,
   head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Alessio's CV" },
-      { name: "description", content: "My personal CV" },
-    ],
     links: [
-      { rel: "stylesheet", href: appCss },
+      { href: appCss, rel: "stylesheet" },
       {
-        rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap",
+        rel: "stylesheet",
       },
     ],
+    meta: [
+      { charSet: "utf-8" },
+      { content: "width=device-width, initial-scale=1", name: "viewport" },
+      { title: "Alessio's CV" },
+      { content: "My personal CV", name: "description" },
+    ],
   }),
-  component: RootComponent,
   notFoundComponent: NotFound,
 });
 

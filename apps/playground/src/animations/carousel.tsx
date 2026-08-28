@@ -31,29 +31,29 @@ export default function Carousel() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const state = useRef({
-    items: [] as { el: HTMLDivElement | null; pos: number }[],
-    positions: new Float32Array(COLORS.length),
-    cardW: 300,
     cardH: 400,
+    cardW: 300,
+    items: [] as { el: HTMLDivElement | null; pos: number }[],
+    lastTime: 0,
+    positions: new Float32Array(COLORS.length),
+    rafId: null as number | null,
+    scrollPos: 0,
     step: 0,
     track: 0,
-    scrollPos: 0,
     v: 0,
     vwHalf: 0,
-    rafId: null as number | null,
-    lastTime: 0,
   });
 
   const dragState = useRef({
     dragging: false,
+    lastDelta: 0,
     lastPos: 0,
     lastT: 0,
-    lastDelta: 0,
   });
 
   useEffect(() => {
     const measure = () => {
-      const sample = cardRefs.current[0];
+      const [sample] = cardRefs.current;
       if (!sample) {
         return;
       }
@@ -80,9 +80,9 @@ export default function Carousel() {
       const tz = invNorm * MAX_DEPTH;
       const scale = MIN_SCALE + invNorm * SCALE_RANGE;
       return {
+        norm,
         transform: `translate3d(${screenPos}px, -50%, ${tz}px) rotateY(${rotation}deg) scale(${scale})`,
         z: tz,
-        norm,
       };
     };
 
@@ -93,7 +93,7 @@ export default function Carousel() {
       let closestIdx = -1;
       let closestDist = Number.POSITIVE_INFINITY;
 
-      for (let i = 0; i < s.items.length; i++) {
+      for (let i = 0; i < s.items.length; i += 1) {
         const item = s.items[i];
         if (!item) {
           continue;
@@ -116,7 +116,7 @@ export default function Carousel() {
       const prevIdx = (closestIdx - 1 + s.items.length) % s.items.length;
       const nextIdx = (closestIdx + 1) % s.items.length;
 
-      for (let i = 0; i < s.items.length; i++) {
+      for (let i = 0; i < s.items.length; i += 1) {
         const item = s.items[i];
         if (!item) {
           continue;
@@ -286,8 +286,8 @@ export default function Carousel() {
             }}
             style={{
               backfaceVisibility: "hidden",
-              transformStyle: "preserve-3d",
               transformOrigin: "90% center",
+              transformStyle: "preserve-3d",
             }}
           >
             <div

@@ -54,7 +54,7 @@ export default function InfiniteWorld() {
   const samples = useRef<{ x: number; y: number }[]>([]);
 
   const scheduled = useRef(false);
-  const viewport = useRef({ width: 0, height: 0 });
+  const viewport = useRef({ height: 0, width: 0 });
   const lastCenter = useRef({ x: 999_999, y: 999_999 });
   const nextId = useRef(1);
 
@@ -138,8 +138,8 @@ export default function InfiniteWorld() {
     const halfRows = Math.ceil(visibleRows / 2) + BUFFER;
 
     const need = new Map<number, { x: number; y: number }>();
-    for (let gy = cy - halfRows; gy <= cy + halfRows; gy++) {
-      for (let gx = cx - halfCols; gx <= cx + halfCols; gx++) {
+    for (let gy = cy - halfRows; gy <= cy + halfRows; gy += 1) {
+      for (let gx = cx - halfCols; gx <= cx + halfCols; gx += 1) {
         need.set(gridKey(gx, gy), { x: gx, y: gy });
       }
     }
@@ -167,11 +167,13 @@ export default function InfiniteWorld() {
         recycled.gridIndex = gridIndex(x, y);
         out.push(recycled);
       } else {
+        const id = nextId.current;
+        nextId.current += 1;
         out.push({
-          id: nextId.current++,
+          gridIndex: gridIndex(x, y),
           gridX: x,
           gridY: y,
-          gridIndex: gridIndex(x, y),
+          id,
         });
       }
     }
@@ -407,16 +409,16 @@ export default function InfiniteWorld() {
         onPointerUp={onPointerUp}
         ref={stageRef}
         style={{
-          touchAction: "none",
           contain: "layout style paint",
+          touchAction: "none",
         }}
       >
-        <div style={{ position: "absolute", left: "50%", top: "50%" }}>
+        <div style={{ left: "50%", position: "absolute", top: "50%" }}>
           <div
             ref={worldRef}
             style={{
-              position: "absolute",
               left: 0,
+              position: "absolute",
               top: 0,
               willChange: "transform",
             }}
@@ -428,29 +430,29 @@ export default function InfiniteWorld() {
                 <div
                   key={tile.id}
                   style={{
-                    position: "absolute",
-                    width: CELL_W,
-                    height: CELL_H,
-                    marginLeft: -CELL_W / 2,
-                    marginTop: -CELL_H / 2,
-                    transform: `translate3d(${xPx}px, ${yPx}px, 0)`,
-                    borderRadius: 16,
+                    alignItems: "center",
                     background: "rgba(255,255,255,0.06)",
                     border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: 16,
+                    color: "rgba(255,255,255,0.9)",
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    color: "rgba(255,255,255,0.9)",
                     fontFamily: "ui-sans-serif, system-ui",
+                    height: CELL_H,
+                    justifyContent: "center",
+                    marginLeft: -CELL_W / 2,
+                    marginTop: -CELL_H / 2,
+                    position: "absolute",
+                    transform: `translate3d(${xPx}px, ${yPx}px, 0)`,
                     userSelect: "none",
+                    width: CELL_W,
                   }}
                 >
                   <div style={{ fontSize: 14, opacity: 0.9 }}>Tile</div>
                   <div style={{ fontSize: 18, fontWeight: 700, marginTop: 6 }}>
                     {tile.gridX}, {tile.gridY}
                   </div>
-                  <div style={{ fontSize: 12, opacity: 0.7, marginTop: 10 }}>
+                  <div style={{ fontSize: 12, marginTop: 10, opacity: 0.7 }}>
                     index: {tile.gridIndex}
                   </div>
                 </div>

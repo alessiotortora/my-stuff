@@ -24,7 +24,7 @@ export default function MotionValueBasics() {
       >
         <motion.div
           className="h-10 w-10 rounded-full bg-red-500"
-          style={{ x, y, opacity }}
+          style={{ opacity, x, y }}
         />
       </div>
     </div>

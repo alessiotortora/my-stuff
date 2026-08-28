@@ -5,20 +5,20 @@ const code = process.env.AUTH_CODE;
 
 const getRefreshToken = async () => {
   const body = new URLSearchParams({
-    grant_type: "authorization_code",
-    code,
-    redirect_uri,
     client_id,
     client_secret,
+    code,
+    grant_type: "authorization_code",
+    redirect_uri,
   });
 
   try {
     const res = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
+      body,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body,
+      method: "POST",
     });
 
     const data = await res.json();

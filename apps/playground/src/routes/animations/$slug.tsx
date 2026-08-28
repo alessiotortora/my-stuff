@@ -60,11 +60,11 @@ function AnimationRoute() {
   return (
     <>
       <Component />
-      {hint && (
+      {hint ? (
         <p className="fixed bottom-6 left-1/2 -translate-x-1/2 font-mono text-sm opacity-50">
           {hint}
         </p>
-      )}
+      ) : null}
     </>
   );
 }

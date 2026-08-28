@@ -3,15 +3,15 @@ import { Link } from "@tanstack/react-router";
 export function ProjectSection() {
   const projects = [
     {
-      label: "Projects",
       description: "A mix of things I’ve built and ongoing work",
       href: "/building/projects",
+      label: "Projects",
     },
     {
-      label: "Animations",
       description:
         "Currently exploring animations to create smoother, more intuitive user experiences",
       href: "/building/animations",
+      label: "Animations",
     },
   ];
 
