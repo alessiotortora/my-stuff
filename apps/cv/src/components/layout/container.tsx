@@ -10,9 +10,9 @@ export default function Container({ children }: { children: React.ReactNode }) {
         <span>Alessio Tortora</span>
         <span className="text-sm">
           {new Date().toLocaleDateString("en-DE", {
-            year: "numeric",
-            month: "long",
             day: "numeric",
+            month: "long",
+            year: "numeric",
           })}
         </span>
       </div>

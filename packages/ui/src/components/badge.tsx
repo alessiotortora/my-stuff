@@ -5,30 +5,30 @@ import type * as React from "react";
 const badgeVariants = cva(
   "inline-flex h-6 items-center gap-1.5 rounded-full text-xs transition-all",
   {
+    defaultVariants: {
+      hasIcon: false,
+      size: "default",
+      variant: "default",
+    },
     variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground",
-        secondary: "bg-secondary text-secondary-foreground",
-        muted: "bg-muted text-muted-foreground",
-        success: "bg-success text-success-foreground",
-        warning: "bg-warning text-warning-foreground",
-        info: "bg-info text-info-foreground",
-        destructive: "bg-destructive text-destructive-foreground",
+      hasIcon: {
+        false: "",
+        true: "w-6 justify-center pr-0 pl-0 md:w-auto md:justify-start md:pr-3 md:pl-2.5",
       },
       size: {
         default: "px-2.5 py-0.5",
-        sm: "px-2 py-0.5 text-[0.6875rem]",
         lg: "px-3 py-1 text-sm",
+        sm: "px-2 py-0.5 text-[0.6875rem]",
       },
-      hasIcon: {
-        true: "w-6 justify-center pr-0 pl-0 md:w-auto md:justify-start md:pr-3 md:pl-2.5",
-        false: "",
+      variant: {
+        default: "bg-primary text-primary-foreground",
+        destructive: "bg-destructive text-destructive-foreground",
+        info: "bg-info text-info-foreground",
+        muted: "bg-muted text-muted-foreground",
+        secondary: "bg-secondary text-secondary-foreground",
+        success: "bg-success text-success-foreground",
+        warning: "bg-warning text-warning-foreground",
       },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-      hasIcon: false,
     },
   }
 );
@@ -51,11 +51,11 @@ export const Badge = ({
 
   return (
     <span
-      className={cn(badgeVariants({ variant, size, hasIcon }), className)}
+      className={cn(badgeVariants({ hasIcon, size, variant }), className)}
       data-slot="badge"
       {...props}
     >
-      {icon && (
+      {hasIcon && (
         <span className="flex size-4 shrink-0 items-center justify-center">
           {icon}
         </span>

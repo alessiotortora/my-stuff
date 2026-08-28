@@ -12,7 +12,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const ITEM_HEIGHT = 80;
 const ITEM_MAX_WIDTH = 384;
-const SPRING_OPTIONS = { stiffness: 900, damping: 80 };
+const SPRING_OPTIONS = { damping: 80, stiffness: 900 };
 
 interface IconProps {
   size?: number;
@@ -88,113 +88,113 @@ const FlagIcon = ({ size = 24 }: IconProps) => (
 );
 
 const styles = {
-  outerContainer: {
-    padding: 16,
-    cursor: "default",
-  },
-  swipeContainer: {
-    position: "relative",
-    height: ITEM_HEIGHT,
-    width: "80dvw",
-    maxWidth: ITEM_MAX_WIDTH,
-    overflow: "hidden",
-    backgroundColor: "black",
-    borderRadius: 12,
-    border: "1px solid #1d2628",
-    zIndex: 0,
-    touchAction: "none",
-  },
-  swipeItem: {
-    position: "absolute",
-    inset: 0,
-    backgroundColor: "#0b1011",
-    zIndex: 10,
-    display: "flex",
+  actionCenterer: {
     alignItems: "center",
-    paddingLeft: 14,
-    paddingRight: 14,
-    gap: 12,
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    width: "25%",
+  },
+  actionContent: {
+    alignItems: "center",
+    color: "#fff",
+    display: "flex",
+    flexDirection: "column",
+    fontSize: 12,
+    gap: 4,
+    justifyContent: "center",
+  },
+  actionFullWidth: {
+    display: "flex",
+    inset: 0,
+    position: "absolute",
+  },
+  actionsGroup: {
+    display: "flex",
+    height: "100%",
+    position: "absolute",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    width: "100%",
   },
   avatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 999,
-    background: "linear-gradient(135deg, #f97316 0%, #db2777 100%)",
-    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    background: "linear-gradient(135deg, #f97316 0%, #db2777 100%)",
+    borderRadius: 999,
     color: "#fff",
-    fontWeight: 600,
-    fontSize: 14,
+    display: "flex",
     flexShrink: 0,
+    fontSize: 14,
+    fontWeight: 600,
+    height: 36,
+    justifyContent: "center",
+    width: 36,
   },
   mailBody: {
     display: "flex",
+    flex: 1,
     flexDirection: "column",
     gap: 2,
     minWidth: 0,
-    flex: 1,
     userSelect: "none",
     WebkitUserSelect: "none",
-  },
-  mailRow: {
-    display: "flex",
-    alignItems: "baseline",
-    justifyContent: "space-between",
-    gap: 8,
-  },
-  mailSender: {
-    fontSize: 13,
-    fontWeight: 600,
-    color: "#f5f5f5",
-  },
-  mailTime: {
-    fontSize: 11,
-    color: "rgba(245,245,245,0.5)",
-    flexShrink: 0,
-  },
-  mailSubject: {
-    fontSize: 12,
-    color: "rgba(245,245,245,0.85)",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
   },
   mailPreview: {
-    fontSize: 11,
     color: "rgba(245,245,245,0.5)",
+    fontSize: 11,
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
   },
-  actionsGroup: {
-    position: "absolute",
-    height: "100%",
-    width: "100%",
-    userSelect: "none",
-    WebkitUserSelect: "none",
+  mailRow: {
+    alignItems: "baseline",
     display: "flex",
+    gap: 8,
+    justifyContent: "space-between",
   },
-  actionFullWidth: {
-    position: "absolute",
-    inset: 0,
-    display: "flex",
+  mailSender: {
+    color: "#f5f5f5",
+    fontSize: 13,
+    fontWeight: 600,
   },
-  actionCenterer: {
-    height: "100%",
-    width: "25%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  actionContent: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 4,
-    flexDirection: "column",
-    color: "#fff",
+  mailSubject: {
+    color: "rgba(245,245,245,0.85)",
     fontSize: 12,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  mailTime: {
+    color: "rgba(245,245,245,0.5)",
+    flexShrink: 0,
+    fontSize: 11,
+  },
+  outerContainer: {
+    cursor: "default",
+    padding: 16,
+  },
+  swipeContainer: {
+    backgroundColor: "black",
+    border: "1px solid #1d2628",
+    borderRadius: 12,
+    height: ITEM_HEIGHT,
+    maxWidth: ITEM_MAX_WIDTH,
+    overflow: "hidden",
+    position: "relative",
+    touchAction: "none",
+    width: "80dvw",
+    zIndex: 0,
+  },
+  swipeItem: {
+    alignItems: "center",
+    backgroundColor: "#0b1011",
+    display: "flex",
+    gap: 12,
+    inset: 0,
+    paddingLeft: 14,
+    paddingRight: 14,
+    position: "absolute",
+    zIndex: 10,
   },
 } as const satisfies Record<string, React.CSSProperties>;
 
@@ -279,17 +279,17 @@ export default function Swipe() {
         animate([
           [
             swipeContainerRef.current,
-            { scaleY: 1.05, scaleX: 0.95, y: -24, pointerEvents: "none" },
+            { pointerEvents: "none", scaleX: 0.95, scaleY: 1.05, y: -24 },
             { duration: 0.1, ease: "easeOut" },
           ],
           [
             swipeContainerRef.current,
-            { scaleY: 1, scaleX: 1, y: 0, pointerEvents: "auto" },
+            { pointerEvents: "auto", scaleX: 1, scaleY: 1, y: 0 },
             { duration: 0.6, type: "spring" },
           ],
         ]);
         targetOffset = 0;
-        animate(swipeAmount, targetOffset, { duration: 0.5, delay: 0.3 });
+        animate(swipeAmount, targetOffset, { delay: 0.3, duration: 0.5 });
       } else {
         swipeAmount.set(targetOffset);
       }
@@ -492,18 +492,18 @@ function Action({
       ref={ref}
       style={{
         ...styles.actionFullWidth,
+        backgroundColor: bgColor,
         justifyContent: side === "right" ? "flex-start" : "flex-end",
         x,
-        backgroundColor: bgColor,
       }}
     >
       <motion.div style={styles.actionCenterer}>
         <motion.span
           style={{
-            x: contentX,
             opacity: contentOpacity,
             scale: contentScale,
             transformOrigin: side === "right" ? "right" : "left",
+            x: contentX,
           }}
         >
           {children}
@@ -542,11 +542,11 @@ function SwipeItemContent({
   return (
     <motion.div
       style={{
-        display: "flex",
         alignItems: "center",
+        display: "flex",
         gap: 12,
-        width: "100%",
         opacity,
+        width: "100%",
         x,
       }}
     >

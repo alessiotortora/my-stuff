@@ -13,69 +13,69 @@ const NAV_ITEMS = [
 ];
 
 const MENUS = {
+  beans: [
+    {
+      items: ["Yirgacheffe", "Sidamo", "Guji"],
+      title: "Ethiopia",
+    },
+    {
+      items: ["Huila", "Nariño", "Tolima"],
+      title: "Colombia",
+    },
+    {
+      items: ["Huehuetenango", "Antigua", "Atitlán"],
+      title: "Guatemala",
+    },
+  ],
   brews: [
     {
-      title: "Espresso",
       items: ["Single shot", "Double shot", "Lungo", "Ristretto"],
+      title: "Espresso",
     },
     {
-      title: "Filter",
       items: ["V60", "Chemex", "Aeropress", "French press"],
+      title: "Filter",
     },
     {
-      title: "Cold",
       items: ["Cold brew", "Nitro", "Sparkling", "Iced latte"],
+      title: "Cold",
     },
   ],
   pastries: [
     {
-      title: "Sweet",
       items: ["Croissant", "Kouign-amann", "Cinnamon roll", "Canelé"],
+      title: "Sweet",
     },
     {
-      title: "Savoury",
       items: ["Ham & cheese", "Mushroom toast", "Feta danish"],
+      title: "Savoury",
     },
     {
-      title: "Daily",
       items: ["Monday cookie", "Tuesday loaf", "Weekend tart"],
-    },
-  ],
-  beans: [
-    {
-      title: "Ethiopia",
-      items: ["Yirgacheffe", "Sidamo", "Guji"],
-    },
-    {
-      title: "Colombia",
-      items: ["Huila", "Nariño", "Tolima"],
-    },
-    {
-      title: "Guatemala",
-      items: ["Huehuetenango", "Antigua", "Atitlán"],
+      title: "Daily",
     },
   ],
 };
 
 const indicatorTransition: Transition = {
-  type: "spring",
-  stiffness: 500,
   damping: 35,
+  stiffness: 500,
+  type: "spring",
 };
 const contentTransition: Transition = {
-  type: "spring",
-  stiffness: 300,
   damping: 30,
+  stiffness: 300,
+  type: "spring",
 };
 const columnTransition: Transition = {
-  type: "spring",
-  stiffness: 400,
   damping: 30,
+  stiffness: 400,
+  type: "spring",
 };
 const panelEnterTransition: Transition = {
-  type: "spring",
-  stiffness: 500,
   damping: 35,
+  stiffness: 500,
+  type: "spring",
 };
 const panelExitTransition: Transition = { duration: 0.15, ease: "easeOut" };
 
@@ -89,11 +89,11 @@ export default function Menu() {
   const [direction, setDirection] = useState(0);
 
   const contentVariants: Variants = {
+    center: { opacity: 1, x: 0 },
     enter: (d: number) => ({
       opacity: 0,
       x: d ? d * contentOffsetX : 0,
     }),
-    center: { opacity: 1, x: 0 },
     exit: (d: number) => ({
       opacity: 0,
       x: d ? d * -contentOffsetX : 0,
@@ -147,7 +147,7 @@ export default function Menu() {
                   className="ml-1.5"
                   fill="none"
                   height="6"
-                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  transition={{ damping: 30, stiffness: 500, type: "spring" }}
                   viewBox="0 0 10 6"
                   width="10"
                 >
@@ -165,18 +165,18 @@ export default function Menu() {
         </nav>
 
         <AnimatePresence>
-          {activeMenu && (
+          {activeMenu ? (
             <motion.div
               animate={{
                 opacity: 1,
-                y: 0,
                 transition: panelEnterTransition,
+                y: 0,
               }}
               className="absolute top-full right-0 left-0 mt-1 overflow-hidden rounded-xl border border-[#1d2628] bg-[#0b1011] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
               exit={{
                 opacity: 0,
-                y: panelOffsetY,
                 transition: panelExitTransition,
+                y: panelOffsetY,
               }}
               initial={{ opacity: 0, y: panelOffsetY }}
               key="panel"
@@ -222,7 +222,7 @@ export default function Menu() {
                 </motion.div>
               </AnimatePresence>
             </motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
       </div>
     </div>

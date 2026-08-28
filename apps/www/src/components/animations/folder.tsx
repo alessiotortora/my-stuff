@@ -10,12 +10,12 @@ import {
   useState,
 } from "react";
 
-const transition: Transition = { type: "spring", bounce: 0, duration: 0.4 };
+const transition: Transition = { bounce: 0, duration: 0.4, type: "spring" };
 
 const Context = createContext<{
   status: string;
   setStatus: Dispatch<SetStateAction<string>>;
-}>({ status: "", setStatus: () => null });
+}>({ setStatus: () => null, status: "" });
 
 function InnerContent() {
   const ctx = useContext(Context);
@@ -130,7 +130,7 @@ export default function Folder() {
   }, []);
 
   return (
-    <Context.Provider value={{ status, setStatus }}>
+    <Context.Provider value={{ setStatus, status }}>
       <MotionConfig transition={transition}>
         <main className="relative flex h-72 w-full items-center justify-center rounded-md border border-muted-foreground/20">
           <InnerContent />

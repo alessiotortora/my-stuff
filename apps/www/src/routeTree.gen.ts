@@ -10,24 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as WritingStackRouteImport } from './routes/writing/stack'
-import { Route as WritingAiRouteImport } from './routes/writing/ai'
-import { Route as BuildingProjectsRouteImport } from './routes/building/projects'
 import { Route as BuildingAnimationsRouteImport } from './routes/building/animations'
+import { Route as BuildingProjectsRouteImport } from './routes/building/projects'
+import { Route as WritingAiRouteImport } from './routes/writing/ai'
+import { Route as WritingStackRouteImport } from './routes/writing/stack'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WritingStackRoute = WritingStackRouteImport.update({
-  id: '/writing/stack',
-  path: '/writing/stack',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WritingAiRoute = WritingAiRouteImport.update({
-  id: '/writing/ai',
-  path: '/writing/ai',
+const BuildingAnimationsRoute = BuildingAnimationsRouteImport.update({
+  id: '/building/animations',
+  path: '/building/animations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuildingProjectsRoute = BuildingProjectsRouteImport.update({
@@ -35,9 +30,14 @@ const BuildingProjectsRoute = BuildingProjectsRouteImport.update({
   path: '/building/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BuildingAnimationsRoute = BuildingAnimationsRouteImport.update({
-  id: '/building/animations',
-  path: '/building/animations',
+const WritingAiRoute = WritingAiRouteImport.update({
+  id: '/writing/ai',
+  path: '/writing/ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WritingStackRoute = WritingStackRouteImport.update({
+  id: '/writing/stack',
+  path: '/writing/stack',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -104,18 +104,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/writing/stack': {
-      id: '/writing/stack'
-      path: '/writing/stack'
-      fullPath: '/writing/stack'
-      preLoaderRoute: typeof WritingStackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/writing/ai': {
-      id: '/writing/ai'
-      path: '/writing/ai'
-      fullPath: '/writing/ai'
-      preLoaderRoute: typeof WritingAiRouteImport
+    '/building/animations': {
+      id: '/building/animations'
+      path: '/building/animations'
+      fullPath: '/building/animations'
+      preLoaderRoute: typeof BuildingAnimationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/building/projects': {
@@ -125,11 +118,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuildingProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/building/animations': {
-      id: '/building/animations'
-      path: '/building/animations'
-      fullPath: '/building/animations'
-      preLoaderRoute: typeof BuildingAnimationsRouteImport
+    '/writing/ai': {
+      id: '/writing/ai'
+      path: '/writing/ai'
+      fullPath: '/writing/ai'
+      preLoaderRoute: typeof WritingAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/writing/stack': {
+      id: '/writing/stack'
+      path: '/writing/stack'
+      fullPath: '/writing/stack'
+      preLoaderRoute: typeof WritingStackRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

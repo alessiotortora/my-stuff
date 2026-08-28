@@ -29,12 +29,12 @@ export function SpotifyShowcase({ song }: { song: NowPlayingResponse }) {
 
       <div className="flex flex-col md:flex-row md:gap-32">
         <div>
-          {song.albumImageUrl && (
+          {song.albumImageUrl ? (
             <AlbumWrapper
               albumName={song.album}
               albumUrl={song.albumImageUrl}
             />
-          )}
+          ) : null}
         </div>
 
         <div className="mt-4 flex items-center space-y-2 md:mt-0">

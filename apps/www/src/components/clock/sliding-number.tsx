@@ -10,10 +10,10 @@ import { useEffect, useId } from "react";
 import useMeasure from "react-use-measure";
 
 const TRANSITION = {
-  type: "spring",
-  stiffness: 280,
   damping: 18,
   mass: 0.3,
+  stiffness: 280,
+  type: "spring",
 } as const;
 
 function Digit({ value, place }: { value: number; place: number }) {
@@ -113,7 +113,7 @@ export function SlidingNumber({
       {digits.map(({ place }) => (
         <Digit key={`pos-${place}`} place={place} value={integerValue} />
       ))}
-      {decimalPart && (
+      {decimalPart ? (
         <>
           <span>{decimalSeparator}</span>
           {Array.from(decimalPart).map((_digit, i) => {
@@ -127,7 +127,7 @@ export function SlidingNumber({
             );
           })}
         </>
-      )}
+      ) : null}
     </div>
   );
 }

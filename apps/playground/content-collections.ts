@@ -2,13 +2,13 @@ import { defineCollection, defineConfig } from "@content-collections/core";
 import { z } from "zod";
 
 const posts = defineCollection({
-  name: "posts",
   directory: "content",
   include: "**/*.md",
+  name: "posts",
   schema: z.object({
-    title: z.string(),
     date: z.string(),
     description: z.string().optional(),
+    title: z.string(),
   }),
 });
 

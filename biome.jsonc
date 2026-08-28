@@ -6,6 +6,12 @@
     "ultracite/biome/remix",
     "ultracite/biome/vitest"
   ],
+  "linter": {
+    "rules": {
+      "performance": { "noJsxPropsBind": "off" },
+      "suspicious": { "noUnnecessaryConditions": "off" }
+    }
+  },
   "overrides": [
     {
       "includes": ["**/routeTree.gen.ts"],

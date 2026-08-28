@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev --port 3001",
     "build": "vite build",
+    "check-types": "tsc --noEmit",
     "deploy": "APP_ENV=production bun run build && APP_ENV=production varlock-wrangler deploy",
-    "check-types": "tsc --noEmit"
+    "dev": "vite dev --port 3001"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^4.1.1",

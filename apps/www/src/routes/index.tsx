@@ -7,11 +7,11 @@ import { SpotifyShowcase } from "#/components/spotify/spotify-showcase";
 import { getNowPlaying } from "#/server/spotify";
 
 export const Route = createFileRoute("/")({
+  component: Home,
   loader: async () => {
     const spotify = await getNowPlaying();
     return { spotify };
   },
-  component: Home,
 });
 
 function Home() {

@@ -23,15 +23,15 @@ const getAccessToken = async () => {
   const basic = btoa(`${clientId}:${clientSecret}`);
 
   const res = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
-    headers: {
-      Authorization: `Basic ${basic}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
     body: new URLSearchParams({
       grant_type: "refresh_token",
       refresh_token: refreshToken,
     }),
+    headers: {
+      Authorization: `Basic ${basic}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    method: "POST",
   });
 
   if (!res.ok) {
@@ -51,8 +51,8 @@ export const getNowPlaying = createServerFn({ method: "GET" }).handler(
 
       if (!access_token) {
         return {
-          isPlaying: false,
           error: "Failed to get Spotify access token",
+          isPlaying: false,
         };
       }
 
@@ -76,16 +76,16 @@ export const getNowPlaying = createServerFn({ method: "GET" }).handler(
         );
 
         const recentData = await recentRes.json();
-        const track = recentData.items[0].track;
+        const { track } = recentData.items[0];
 
         return {
-          isPlaying: false,
-          title: track.name,
-          artist: track.artists.map((a: SpotifyArtist) => a.name).join(", "),
           album: track.album.name,
           albumImageUrl: track.album.images[0].url,
-          songUrl: track.external_urls.spotify,
+          artist: track.artists.map((a: SpotifyArtist) => a.name).join(", "),
+          isPlaying: false,
           playedAt: recentData.items[0].played_at,
+          songUrl: track.external_urls.spotify,
+          title: track.name,
         };
       }
 
@@ -93,16 +93,16 @@ export const getNowPlaying = createServerFn({ method: "GET" }).handler(
       const track = data.item;
 
       return {
-        isPlaying: true,
-        title: track.name,
-        artist: track.artists.map((a: SpotifyArtist) => a.name).join(", "),
         album: track.album.name,
         albumImageUrl: track.album.images[0].url,
+        artist: track.artists.map((a: SpotifyArtist) => a.name).join(", "),
+        isPlaying: true,
         songUrl: track.external_urls.spotify,
+        title: track.name,
       };
     } catch (error) {
       console.error("Spotify fetch error:", error);
-      return { isPlaying: false, error: "Failed to fetch track" };
+      return { error: "Failed to fetch track", isPlaying: false };
     }
   }
 );

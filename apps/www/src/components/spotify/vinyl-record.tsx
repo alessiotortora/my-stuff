@@ -186,12 +186,14 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
       onMouseUp={handleDragEnd}
       onTouchEnd={handleDragEnd}
       onTouchMove={(e) => {
+        // biome-ignore lint/style/useDestructuring: TouchList is not iterable
         const touch = e.touches[0];
         if (touch) {
           handleDrag(touch.clientY);
         }
       }}
       onTouchStart={(e) => {
+        // biome-ignore lint/style/useDestructuring: TouchList is not iterable
         const touch = e.touches[0];
         if (touch) {
           handleGesture(touch.clientY);
@@ -199,20 +201,20 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
       }}
       ref={recordRef}
       style={{
+        touchAction: "none",
         transform: `rotate(${rotation}deg)`,
         transition: isDraggingRef.current ? "none" : "transform 0.5s ease-out",
-        touchAction: "none",
       }}
     >
       <div className="relative h-full w-full">
-        {albumUrl && (
+        {albumUrl ? (
           <div
             className="absolute inset-0 overflow-hidden rounded-full"
             style={{
-              width: "47%",
               height: "47%",
-              top: "27%",
               left: "27%",
+              top: "27%",
+              width: "47%",
               zIndex: 1,
             }}
           >
@@ -223,14 +225,14 @@ export function VinylRecord({ className, albumUrl }: VinylRecordProps) {
               src={albumUrl}
             />
           </div>
-        )}
+        ) : null}
         <div
           className="absolute rounded-full bg-white"
           style={{
-            width: "12%",
             height: "12%",
-            top: "45%",
             left: "45%",
+            top: "45%",
+            width: "12%",
             zIndex: 1,
           }}
         />

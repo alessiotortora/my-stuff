@@ -9,18 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AnimationsRouteRouteImport } from './routes/animations/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnimationsRouteRouteImport } from './routes/animations/route'
 import { Route as AnimationsSlugRouteImport } from './routes/animations/$slug'
 
-const AnimationsRouteRoute = AnimationsRouteRouteImport.update({
-  id: '/animations',
-  path: '/animations',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnimationsRouteRoute = AnimationsRouteRouteImport.update({
+  id: '/animations',
+  path: '/animations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnimationsSlugRoute = AnimationsSlugRouteImport.update({
@@ -60,18 +60,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/animations': {
-      id: '/animations'
-      path: '/animations'
-      fullPath: '/animations'
-      preLoaderRoute: typeof AnimationsRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/animations': {
+      id: '/animations'
+      path: '/animations'
+      fullPath: '/animations'
+      preLoaderRoute: typeof AnimationsRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/animations/$slug': {
