@@ -41,6 +41,18 @@ Separate from the above:
 - **`invalid_grant`** usually points at a bad/expired/revoked **refresh token**, or a token from another app. An **authorization `code`** is not a refresh token.
 - **Empty `items` / null `track`** on recently-played, or **missing `album.images[0]`**, can throw if the handler assumes a happy path.
 
+### Refresh token expiry (Spotify policy, enforced since 2026-07-20)
+
+Authorization Code refresh tokens now **expire 6 months after the original authorization** ([Spotify blog](https://developer.spotify.com/blog/2026-06-18-refresh-token-expiration)). Refreshing access tokens does **not** extend the clock. Expiry surfaces as `400 invalid_grant` ("Refresh token revoked") from the token endpoint; `src/server/spotify.ts` detects this and the site shows "Spotify re-authorization needed".
+
+**Re-auth (~2 min):**
+
+1. Open the authorize URL with `redirect_uri=http://127.0.0.1:3000/callback` (must match a Spotify dashboard entry **exactly**, and the `redirect_uri` in `src/app/utils/get-refresh-token.mjs`; Spotify allows the `127.0.0.1` loopback literal but not `localhost`) and scopes `user-read-currently-playing user-read-recently-played`.
+2. After the redirect, copy `code` from the address bar (the 404 at `/callback` is expected — nothing serves that route).
+3. Within ~10 min: `CLIENT_ID=... CLIENT_SECRET=... AUTH_CODE=... node src/app/utils/get-refresh-token.mjs`
+4. Update `SPOTIFY_REFRESH_TOKEN` in `apps/www/.env.local` **and** the Bitwarden item, then restart dev / redeploy.
+5. Spotify may also **rotate** the refresh token on ordinary refreshes — the server function logs a `console.warn` with the new value when that happens; persist it.
+
 ## 5. Operational notes
 
 - **`varlock run --`** before `vite dev` / production `vite build` is required when resolution depends on the Varlock CLI (e.g. Bitwarden). A plain `vite build` without `varlock run` may not see the same resolved values.
