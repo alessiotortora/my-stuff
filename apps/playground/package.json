@@ -27,7 +27,7 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.54.9",
     "@content-collections/core": "^0.15.2",
-    "@content-collections/vite": "^0.3.0",
+    "@content-collections/vite": "^0.3.1",
     "@repo/typescript-config": "*",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
