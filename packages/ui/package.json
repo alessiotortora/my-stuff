@@ -27,7 +27,7 @@
     "@repo/typescript-config": "*",
     "@tailwindcss/postcss": "^4.2.4",
     "@turbo/gen": "^2.9.18",
-    "@types/node": "^25.9.8",
+    "@types/node": "^25.9.9",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "tailwindcss": "^4.2.4",
