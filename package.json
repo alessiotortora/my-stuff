@@ -23,7 +23,7 @@
     "varlock": "^0.9.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
+    "@biomejs/biome": "2.6.4",
     "@varlock/bitwarden-plugin": "^0.0.6",
     "lefthook": "^2.1.16",
     "turbo": "^2.9.18",
